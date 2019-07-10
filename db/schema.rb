@@ -10,7 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_125129) do
+ActiveRecord::Schema.define(version: 2019_07_09_083233) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cds", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "stock"
+    t.integer "status", default: 0
+    t.integer "image_id"
+    t.integer "label_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "disks", force: :cascade do |t|
+    t.integer "number"
+    t.integer "cd_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "musics", force: :cascade do |t|
+    t.integer "number"
+    t.string "name"
+    t.integer "disk_id"
+    t.integer "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
