@@ -41,7 +41,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :mei, null: false
       t.string :postal_code, null: false
       t.string :address, null: false
-      t.string :phone_number, null: false
+      
     end
 
     add_index :users, :email,                unique: true
