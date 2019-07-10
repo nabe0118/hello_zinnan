@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_07_09_083233) do
+ActiveRecord::Schema.define(version: 2019_07_09_125129) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -78,8 +77,9 @@ ActiveRecord::Schema.define(version: 2019_07_09_083233) do
     t.string "mei", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
-    t.string "phone_number", null: false
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end
