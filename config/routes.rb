@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  #get 'users/:id' => 'users#show'
+
   namespace :admin do
     resources :cds
     resources :labels, only:[:new, :create]
