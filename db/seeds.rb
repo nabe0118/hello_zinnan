@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# coding: utf-8
+Genre.create(
+  [
+    {name: 'J-POP'},
+    {name: '洋楽'},
+    {name: 'K-POP'},
+    {name: 'ロック/オルタナティブ'},
+    {name: 'パンク/ハードコア'},
+    {name: 'ビジュアル'},
+    {name: 'R&B/ソウル'},
+    {name: 'ヒップホップ'},
+    {name: 'ダンス/ハウス/テクノ'},
+    {name: 'レゲエ/スカ'},
+    {name: 'EDM'}
+  ]
+)
