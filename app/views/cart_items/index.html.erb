@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <h1>カート内一覧</h1>
+    <div class="">
+      <% @cart_items.each do |cart| %>
+        <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
+        <%= cart.cd.name %>
+        <%= link_to "CD詳細", cart_item_path(cart.id) %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,47 @@
-<h1>Admin::Cds#edit</h1>
-<p>Find me in app/views/admin/cds/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= form_for @cd, :url => {:action => :update} do |f| %>
+    <div class="col-xs-4">
+      <h1>CD編集画面</h1>
+      <h3>CD</h3>
+      <div class="field">
+        <%= f.label :Label %><br>
+        <%= f.collection_select :label_id, Label.all, :id, :name, :prompt => true %><br>
+      </div>
+      <%= link_to "Labelを追加する",  new_admin_label_path %><br>
+      <div class="field">
+        <%= f.label :ジャンル %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %><br>
+      </div>
+      <div class="field">
+        <%= f.label :Title %><br>
+        <%= f.text_field :name %><br>
+      </div>
+      <div class="field">
+        <%= f.label :ジャケット画像（税込） %><br>
+        <%= f.attachment_field :image %><br>
+      </div>
+      <div class="field">
+        <%= f.label :値段 %><br>
+        <%=f.number_field :price %><br>
+      </div>
+      <div class="field">
+        <%= f.label :在庫数 %><br>
+        <%= f.number_field :stock %>
+      </div>
+    </div>
+    <div class="col-xs-8">
+      <h3>diskを追加</h3>
+      <div  class="disks">
+        <%= f.fields_for :disks do |d|  %>
+          <%= render 'disk_fields', f: d %>
+        <% end %>
+      </div>
+      <div class="links">
+        <%= link_to_add_association 'diskを追加',f, :disks,  class: 'btn btn-default'  %>
+      </div>
+      <%= f.submit %>
+    </div>
+    <% end %>
+  </div>
+</div>

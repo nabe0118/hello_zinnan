@@ -25,12 +25,22 @@ class Admin::CdsController < ApplicationController
   end
 
   def edit
+    @cd = Cd.includes(:disks => :musics).find(params[:id])
   end
 
   def update
+    @cd = Cd.includes(:disks => :musics).find(params[:id])
+    if @cd.update(cd_params)
+      redirect_to admin_cd_path(@cd.id)
+    else
+      render edit
+    end
   end
 
   def destroy
+    @cd = Cd.includes(:disks => :musics).find(params[:id])
+    @cd.destroy
+    redirect_to admin_cds_path
   end
 
   private
