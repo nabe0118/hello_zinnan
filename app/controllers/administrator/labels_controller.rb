@@ -1,4 +1,4 @@
-class Admin::LabelsController < ApplicationController
+class Administrator::LabelsController < ApplicationController
   def new
     @label = Label.new
   end
@@ -6,7 +6,7 @@ class Admin::LabelsController < ApplicationController
   def create
     @label = Label.new(label_params)
     if @label.save
-    redirect_to new_admin_cd_path
+    redirect_to new_administrator_cd_path
   end
   end
 

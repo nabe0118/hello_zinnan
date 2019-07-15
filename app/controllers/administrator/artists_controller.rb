@@ -1,4 +1,4 @@
-class Admin::ArtistsController < ApplicationController
+class Administrator::ArtistsController < ApplicationController
   def new
     @artist = Artist.new
   end
@@ -6,7 +6,7 @@ class Admin::ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     @artist.save
-    redirect_to new_admin_cd_path
+    redirect_to new_administrator_cd_path
   end
 
   private
