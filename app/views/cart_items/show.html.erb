@@ -45,8 +45,12 @@
           <% end %>
       </div>
         <% end %>
-        <%= link_to "編集", edit_admin_cd_path %>
-        <%= link_to "CD削除", admin_cd_path, method: :delete %>
+        <%= @cart_item.number%>枚
+    </div>
+        <%= link_to "枚数変更", edit_cart_item_path %>
+        <%= link_to "カートから消す", cart_item_path, method: :delete %>
+    <div class="col-xs-4">
+
     </div>
   </div>
 </div>
