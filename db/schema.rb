@@ -12,6 +12,18 @@
 
 ActiveRecord::Schema.define(version: 2019_07_15_063052) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "familiy_name"
+    t.string "first_name"
+    t.string "sei"
+    t.string "mei"
+    t.string "postal_code"
+    t.string "address"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "admin_mypages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,18 +39,6 @@ ActiveRecord::Schema.define(version: 2019_07_15_063052) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "familiy_name"
-    t.string "first_name"
-    t.string "sei"
-    t.string "mei"
-    t.string "postal_code"
-    t.string "address"
-    t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "artists", force: :cascade do |t|

@@ -9,7 +9,11 @@ class Devise::Admins::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    administrator_admin_mypage_index_path
+    if current_admin
+      flash[:notice]="signed in successfully"
+      administrator_admin_mypage_index_path
+    else
+      new_admin_session_path
   end
 
   # POST /resource/sign_in
