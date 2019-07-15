@@ -10,46 +10,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <nav class="nav navbar-nav navbar-left">
-          <span class="app-titile">ECsite</span>
-        </nav>
-          <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-            <%# ここからlink_toとpathを追加%>
-            <li class="">
-                <%= ' ECsite' , class: "glyphicon glyphicon-home" %>
-              </li>
-              <li class="">
-                <%= ' Users', class: "glyphicon glyphicon-user"%>
-              </li>
-              <li class="">
-                <%= ' Books', class: "glyphicon glyphicon-book" %>
-              </li>
-              <li class="">
-                <%= " logout", class: "glyphicon glyphicon-log-out" %>
-              </li>
-            <% else %>
-              <li class="">
-                <%= ' ECsite' , class: "glyphicon glyphicon-home" %>
-              </li>
-              <li class="">
-                <%= ' About', class: "glyphicon glyphicon-link" %>
-              <li class="Sign Up">
-                <%= " Sign up", class: "glyphicon glyphicon-edit" %>
-              </li>
-              <li class="">
-                <%= " login",  class: "glyphicon glyphicon-log-in" %>
-              </li>
-            <% end %>
-          </ul>
-      </div>
-    </nav>
-          <% if flash[:notice] %>
-          <%= flash[:notice] %>
-        <% end %>
-        <%= yield %>
+    
   </body>
 <div class="container">
   <div class="row">
