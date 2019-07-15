@@ -10,7 +10,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-inverse">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
@@ -46,13 +45,15 @@
                <%= yield %>
                  </body>
 
+
+            </li>
+            <%= link_to("URL") do %>
+            <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
+
             <% end %>
-          </ul>
-      </div>
-    </nav>
-          <% if flash[:notice] %>
-          <%= flash[:notice] %>
-        <% end %>
+
+          <%= yield %>
+
 
   </body>
 <div class="container">
@@ -62,5 +63,4 @@
     </div>
   </div>
 </div>
-
 </html>

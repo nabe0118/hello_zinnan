@@ -1,4 +1,4 @@
-class Admin::CdsController < ApplicationController
+class Administrator::CdsController < ApplicationController
   def index
     @cds = Cd.all
   end
@@ -18,7 +18,7 @@ class Admin::CdsController < ApplicationController
   def create
     @cd = Cd.new(cd_params)
     if @cd.save
-      redirect_to admin_cds_path
+      redirect_to administrator_cds_path
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Admin::CdsController < ApplicationController
   def update
     @cd = Cd.includes(:disks => :musics).find(params[:id])
     if @cd.update(cd_params)
-      redirect_to admin_cd_path(@cd.id)
+      redirect_to administrator_cd_path(@cd.id)
     else
       render edit
     end
@@ -40,7 +40,7 @@ class Admin::CdsController < ApplicationController
   def destroy
     @cd = Cd.includes(:disks => :musics).find(params[:id])
     @cd.destroy
-    redirect_to admin_cds_path
+    redirect_to administrator_cds_path
   end
 
   private
