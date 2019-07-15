@@ -1,59 +1,60 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <h1>CD詳細</h1>
-      <div class="name">
-        タイトル<br>
-        <%= @cd.name %>
-      </div>
+      <h1> <%= @cd.name %></h1>
       <div class="image">
         <%= attachment_image_tag @cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
       </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="price">
-        価格(税込):
-        <%= @cd.price %>
+      <div class="status">
+        販売状況:<%= @cd.status %>
       </div>
       <div class="stock">
-        在庫数:
-        <%= @cd.stock %>
+        在庫数:<%= @cd.stock %>
       </div>
-      <div class="status">
-        販売状況:
-        <%= @cd.status %>
-      </div>
+    </div>
+    <div class="col-xs-8">
       <div class="label">
-        レーベル:
-        <%= @cd.label.name %>
+        レーベル:<%= @cd.label.name %>
       </div>
       <div class="genre">
-        ジャンル:
-        <%= @cd.genre.name %>
+        ジャンル:<%= @cd.genre.name %>
       </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="disk-number">
-        <% @cd.disks.each do |disk| %>
-          <%= disk.number %>
-      </div>
-      <div class="music">
-          <% disk.musics.each do |music| %>
-            <%= music.number %>
-            <%= music.name %>
-            <%= music.artist.name %>
-          <% end %>
-      </div>
-        <% end %>
-    </div>
-    <div class="col-xs-4">
-      <div class="form-group">
-        <%= form_for @cart_item, :url => {:action => :create} do |f| %>
+      <h3 class="price">
+        価格(税込):<%= @cd.price %>円
+      </h3>
+      <% @cd.disks.each do |disk| %>
+        <div class="disk-number">
+          Disk<%= disk.number %>
+        </div>
+        <div class="music">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>曲順</th>
+                <th>曲名</th>
+                <th>アーティスト</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% disk.musics.each do |music| %>
+                <tr>
+                  <td><%= music.number %></td>
+                  <td><%= music.name %></td>
+                  <td><%= music.artist.name %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+        <div class="col-xs-6"></div>
+        <div class="col-xs-6">
+          <%= form_for @cart_item, :url => {:action => :create} do |f| %>
             <%= f.label :枚数 %>
             <%= f.number_field :number %>
-            <%= f.submit 'カートに入れる'%>
-        <% end %>
-      </div>
+            =><%= f.submit 'カートに入れる'%>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

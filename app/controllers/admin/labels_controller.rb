@@ -8,6 +8,7 @@ class Admin::LabelsController < ApplicationController
     if @label.save
     redirect_to new_admin_cd_path
   end
+  end
 
   private
     def label_params

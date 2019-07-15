@@ -1,6 +1,6 @@
 <h1>Admin::Artists#new</h1>
-  <%= form_for @artist, :url => {:action => :create} do |f| %>
-    <%= f.label :Name %><br>
-    <%= f.text_field :name %><br>
-    <%= f.submit %>
+  <%= form_for @artist, :url => {:action => :create} do |a| %>
+    <%= a.label :Name %><br>
+    <%= a.text_field :name %><br>
+    <%= a.submit %>
   <% end %>

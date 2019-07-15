@@ -5,7 +5,7 @@
       <h1>CD登録画面</h1>
       <h3>CD</h3>
       <div class="field">
-        <%= f.label :Label %><br>
+        <%= f.label :Label %>
         <%= f.collection_select :label_id, Label.all, :id, :name, :prompt => true %><br>
       </div>
       <%= link_to "Labelを追加する",  new_admin_label_path %><br>
