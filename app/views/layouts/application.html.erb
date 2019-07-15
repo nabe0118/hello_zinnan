@@ -46,15 +46,10 @@
             <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
             <% end %>
 
-            <% end %>
-          </ul>
-      </div>
-    </nav>
-          <% if flash[:notice] %>
-          <%= flash[:notice] %>
-        <% end %>
+    
+          <%= yield %>
 
-        <%= yield %>
+
   </body>
 <div class="container">
   <div class="row">

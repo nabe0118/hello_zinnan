@@ -1,9 +1,0 @@
-<tr class="nested-fields" >
-  <div class="form-group">
-    <td><%= f.number_field :number %></td>
-    <td><%= f.text_field :name %></td>
-    <td><%= f.collection_select :artist_id, Artist.all, :id, :name, :prompt => true %></td>
-    <td><%= link_to "アーティストの追加", new_admin_artist_path %></td>
-    <td class="links"><%= link_to_remove_association '削除', f, class: 'btn btn-default' %></td>
-  </div>
-</tr>

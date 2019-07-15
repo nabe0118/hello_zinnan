@@ -1,0 +1,6 @@
+<h1>Admin::Artists#new</h1>
+  <%= form_for @artist, :url => {:action => :create} do |a| %>
+    <%= a.label :Name %><br>
+    <%= a.text_field :name %><br>
+    <%= a.submit %>
+  <% end %>
