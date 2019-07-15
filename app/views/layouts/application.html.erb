@@ -18,7 +18,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
             <%# ここからlink_toとpathを追加%>
-            <!-- <li class="">
+            <li class="">
               <%= link_to ' ECsite' , class: "glyphicon glyphicon-home" %>
             </li>
             <li class="">
@@ -41,12 +41,9 @@
             </li>
             <li class="">
               <%= link_to  'login',  class: "glyphicon glyphicon-log-in" %>
-            </li> -->
+            </li>
                <%= yield %>
                  </body>
-
-
-            </li>
             <%= link_to("URL") do %>
             <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
 
