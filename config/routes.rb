@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   #get 'users/:id' => 'users#show
 
-  namespace :admin do
+
+  namespace :administrator do
+    resources :admin_mypages, only:[:index]
     resource :cds
     resources :addresses
     resources :cds
@@ -11,7 +13,20 @@ Rails.application.routes.draw do
 
   end
 
-  devise_for :users
+  devise_for :admins,controllers: {
+      sessions: 'devise/admins/sessions',
+      registrations: 'devise/admins/registrations',
+      passwords: 'devise/admins/passwords'
+    }
+
+    scope module: 'devise' do
+    devise_for :users, controllers: {
+      sessions: 'devise/users/sessions',
+      registrations: 'devise/users/registrations',
+      passwords: 'devise/users/passwords'
+    }
+  end
+
     resources :users
     resources :addresses
     resources :cart_items, only:[:index, :show, :edit, :update, :destroy]
