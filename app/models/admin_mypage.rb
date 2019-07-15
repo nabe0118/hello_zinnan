@@ -1,0 +1,2 @@
+class AdminMypage < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+module Administrator::AdminMypagesHelper
+end
