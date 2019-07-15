@@ -8,3 +8,21 @@
 
 Admin.create!(email: 'test@test', password: 'aaaaaa')
 
+
+# coding: utf-8
+Genre.create(
+  [
+    {name: 'J-POP'},
+    {name: '洋楽'},
+    {name: 'K-POP'},
+    {name: 'ロック/オルタナティブ'},
+    {name: 'パンク/ハードコア'},
+    {name: 'ビジュアル'},
+    {name: 'R&B/ソウル'},
+    {name: 'ヒップホップ'},
+    {name: 'ダンス/ハウス/テクノ'},
+    {name: 'レゲエ/スカ'},
+    {name: 'EDM'}
+  ]
+)
+

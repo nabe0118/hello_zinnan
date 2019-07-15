@@ -1,5 +1,4 @@
 <h1>CD一覧</h1>
-
 <div class="container">
   <% @cds.each do |cd| %>
     <div class="row">
@@ -11,9 +10,10 @@
         <%= cd.status %><br>
         <b>¥</b>
         <%= cd.price %><br>
-        <%= link_to "詳細",  admin_cd_path(cd.id) %>
       </div>
       </div>
     </div>
+  <%= link_to "詳細", new_cart_item_path(cd.id) %>
   <% end %>
+  <%= paginate @cds, class: "paginate" %>
 </div>

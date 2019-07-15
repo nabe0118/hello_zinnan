@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <h1>CD詳細</h1>
+      <h1>CD枚数変更</h1>
       <div class="name">
         タイトル<br>
         <%= @cd.name %>
@@ -45,8 +45,15 @@
           <% end %>
       </div>
         <% end %>
-        <%= link_to "編集", edit_admin_cd_path %>
-        <%= link_to "CD削除", admin_cd_path, method: :delete %>
+    </div>
+    <div class="col-xs-4">
+      <div class="form-group">
+        <%= form_for @cart_item do |f| %>
+            <%= f.label :枚数 %>
+            <%= f.number_field :number %>
+            <%= f.submit '修正'%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
