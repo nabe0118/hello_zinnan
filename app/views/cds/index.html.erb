@@ -1,3 +1,9 @@
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
+
 <h1>CD一覧</h1>
 <div class="container">
   <% @cds.each do |cd| %>
