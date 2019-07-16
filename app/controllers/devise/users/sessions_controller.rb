@@ -9,7 +9,12 @@ class Devise::Users::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
+    if current_user
+    flash[:notice] = "signed in successfully"
+        user_path(current_user_id)
+    else
     root_path
+  end
   end
 
   # POST /resource/sign_in
