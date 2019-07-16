@@ -14,6 +14,7 @@ class Devise::Admins::SessionsController < Devise::SessionsController
       administrator_admin_mypage_index_path
     else
       new_admin_session_path
+    end
   end
 
   # POST /resource/sign_in
