@@ -7,7 +7,5 @@ protected
    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :family_name, :first_name, :sei, :mei, :postal_code, :address, :phone_number])
  end
 
-def top
-end
 
 end

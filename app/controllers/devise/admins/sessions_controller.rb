@@ -11,9 +11,10 @@ class Devise::Admins::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     if current_admin
       flash[:notice]="signed in successfully"
-      administrator_admin_mypage_index_path
+      administrator_admin_mypages_path
     else
       new_admin_session_path
+      flash[:notice]="ログインに失敗しました"
     end
   end
 

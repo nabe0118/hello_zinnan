@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 
   namespace :administrator do
-    resources :admin_mypages, only:[:index]
+    resources :admin_mypages, only:[:index,:edit]
     resources :cds
     resources :addresses
     resources :labels, only:[:new, :create]
