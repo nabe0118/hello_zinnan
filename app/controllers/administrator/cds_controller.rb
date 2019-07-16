@@ -5,8 +5,6 @@ class Administrator::CdsController < ApplicationController
 
   def show
     @cd = Cd.includes(:disks => :musics).find(params[:id])
-    # @disks = @cd.disks
-    # @music =
   end
 
   def new

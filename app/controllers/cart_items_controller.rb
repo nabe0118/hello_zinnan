@@ -10,8 +10,8 @@ class CartItemsController < ApplicationController
   end
 
   def index
-    #@user = User.find(params[:id])に後に変更
-    @cart_items = CartItem.all
+    @user = current_user
+    @cart_items = @user.cart_items
   end
 
   def edit
@@ -22,6 +22,7 @@ class CartItemsController < ApplicationController
   def create
     @cd = Cd.find(params[:cd_id])
     @cart_item = @cd.cart_items.build(cart_item_params)
+    @cart_item.user_id = current_user.id
     if @cart_item.save
       redirect_to root_path
     else
@@ -47,7 +48,7 @@ class CartItemsController < ApplicationController
   private
 # :user_id
   def cart_item_params
-    params.require(:cart_item).permit(:number, :cd_id)
+    params.require(:cart_item).permit(:number, :cd_id, :user_id)
   end
 
 end
