@@ -1,19 +1,18 @@
 <h1>CD一覧</h1>
 
 <div class="container">
-  <% @cds.each do |cd| %>
     <div class="row">
-      <div class="col-xs-3">
-        <%= cd.name %>
-        <%= attachment_image_tag @cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200" %>
-      </div>
-      <div class="col-xs-3">
+      <% @cds.each do |cd| %>
+      <div class="box">
+        <div class="hoge">
+        <h2><%= cd.name %></h2>
+        <%= attachment_image_tag @cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200" %><br>
         <%= cd.status %><br>
         <b>¥</b>
         <%= cd.price %><br>
         <%= link_to "詳細",  administrator_cd_path(cd.id) %>
+        </div>
       </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
