@@ -19,6 +19,8 @@ class Administrator::CdsController < ApplicationController
       redirect_to administrator_cds_path
     else
       render :new
+      @disk = @cd.disks.build
+      @music = @disk.musics.build
     end
   end
 
@@ -44,7 +46,7 @@ class Administrator::CdsController < ApplicationController
   private
 
   def cd_params
-    params.require(:cd).permit(:name, :price, :stock, :image, :label_id, :genre_id, disks_attributes:[:id, :number, :_destroy, musics_attributes: [:id, :number, :name, :artist_id, :_destroy]])
+    params.require(:cd).permit(:name, :price, :stock,:status, :image, :label_id, :genre_id, disks_attributes:[:id, :number, :_destroy, musics_attributes: [:id, :number, :name, :artist_id, :_destroy]])
   end
 
 end
