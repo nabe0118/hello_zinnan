@@ -8,7 +8,7 @@
         <%= f.label :Label %><br>
         <%= f.collection_select :label_id, Label.all, :id, :name, :prompt => true %><br>
       </div>
-      <%= link_to "Labelを追加する",  new_admin_label_path %><br>
+      <%= link_to "Labelを追加する",  new_administrator_label_path %><br>
       <div class="field">
         <%= f.label :ジャンル %>
         <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %><br>
@@ -28,6 +28,10 @@
       <div class="field">
         <%= f.label :在庫数 %><br>
         <%= f.number_field :stock %>
+      </div>
+      <div class="field">
+        <%= f.label :status %><br>
+        <%= f.select :status, Cd.statuses.keys.to_a, {} %>
       </div>
     </div>
     <div class="col-xs-8">

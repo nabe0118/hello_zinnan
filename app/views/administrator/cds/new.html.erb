@@ -1,5 +1,11 @@
 <div class="container">
   <div class="row">
+    <% if @cd.errors.any? %>
+      <% @cd.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+
     <%= form_for @cd, :url => {:action => :create} do |f| %>
     <div class="col-xs-4">
       <h1>CD登録画面</h1>

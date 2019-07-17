@@ -26,7 +26,7 @@ class CartItemsController < ApplicationController
     if @cart_item.save
       redirect_to root_path
     else
-      render new
+      render :new
     end
   end
 
@@ -35,7 +35,7 @@ class CartItemsController < ApplicationController
       if @cart_item.update(cart_item_params)
         redirect_to cart_item_path(@cart_item.id)
       else
-        render edit
+        render :edit
       end
   end
 
