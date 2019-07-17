@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      cd: CD
+    attributes:
+      cd:
+        name: CDタイトル
+        price: 値段
+        stock: 在庫数

@@ -1,5 +1,12 @@
 <div class="container">
   <div class="row">
+
+    <% if @cart_item.errors.any? %>
+      <% @cart_item.errors.messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+
     <div class="col-xs-4">
       <h1> <%= @cd.name %></h1>
       <div class="image">

@@ -6,8 +6,10 @@ class Administrator::LabelsController < ApplicationController
   def create
     @label = Label.new(label_params)
     if @label.save
-    redirect_to new_administrator_cd_path
-  end
+      redirect_to new_administrator_cd_path
+    else
+      render :new
+    end
   end
 
   private
