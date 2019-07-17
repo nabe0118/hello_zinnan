@@ -14,41 +14,47 @@
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
           <span class="app-titile">ECsite</span>
+          <span class="admin_icon">
+            <%= link_to '←管理者はこちら', new_admin_session_path, class: "glyphicon glyphicon-user" %>
+          </span>
+        </nav>
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-              <%# ここからlink_toとpathを追加%>
                 <li class="">
-                  <%= link_to 'ECsite', cds_path, class: "glyphicon glyphicon-home" %>
+                  <%= link_to '  ECsite', cds_path, class: "glyphicon glyphicon-home" %>
                 </li>
                 <li class="">
-                  <%= link_to 'Users', class: "glyphicon glyphicon-user"%>
+                  <%= link_to ' Users', '#', class: "glyphicon glyphicon-user" %>
                 </li>
                 <li class="">
-                  <%= link_to  'Books', class: "glyphicon glyphicon-book" %>
+                  <%= link_to ' logout',destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+                </li>
+                <%= link_to("cart_items") do %>
+                  <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
+                <% end %>
+                <% elsif admin_signed_in? %>
+                <li>
+                <%= link_to '  ECsite', cds_path, class: "glyphicon glyphicon-home" %>
                 </li>
                 <li class="">
-                  <%= link_to 'logout',destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+                <%= link_to ' Users', '#', class: "glyphicon glyphicon-user" %>
                 </li>
                 <li>
-                  <%= link_to "admin_log out", destroy_admin_session_path, method: :delete %>
+                  <%= link_to " admin_logout", destroy_admin_session_path, method: :delete,class: "glyphicon glyphicon-log-out"  %>
                 </li>
               <% else %>
                 <li class="">
-                  <%= link_to 'ECsite', cds_path, class: "glyphicon glyphicon-home" %>
+                  <%= link_to ' ECsite', cds_path, class: "glyphicon glyphicon-home" %>
                 </li>
-                <li class="">
-                  <%= link_to  'About', class: "glyphicon glyphicon-link" %>
                 <li class="Sign Up">
-                  <%= link_to 'Sign up',new_user_registration_path, class: "glyphicon glyphicon-edit" %>
+                  <%= link_to ' Sign up',new_user_registration_path, class: "glyphicon glyphicon-edit" %>
                 </li>
                 <li class="">
-                  <%= link_to  'login',new_user_session_path,  class: "glyphicon glyphicon-log-in" %>
+                  <%= link_to  ' login',new_user_session_path,  class: "glyphicon glyphicon-log-in" %>
                 </li>
               <% end %>
-              <%= link_to("URL") do %>
-                <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
-              <% end %>
-        </nav>
+              </ul>
+      </div>
     </nav>
     
 
