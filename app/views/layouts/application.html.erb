@@ -29,6 +29,9 @@
                 <li class="">
                   <%= link_to ' logout',destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
                 </li>
+                <%= link_to("cart_items") do %>
+                  <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
+                <% end %>
                 <% elsif admin_signed_in? %>
                 <li>
                 <%= link_to '  ECsite', cds_path, class: "glyphicon glyphicon-home" %>
@@ -49,9 +52,6 @@
                 <li class="">
                   <%= link_to  ' login',new_user_session_path,  class: "glyphicon glyphicon-log-in" %>
                 </li>
-              <% end %>
-              <%= link_to("URL") do %>
-                <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
               <% end %>
               </ul>
       </div>
