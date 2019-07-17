@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_063052) do
+ActiveRecord::Schema.define(version: 2019_07_16_095325) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "familiy_name"
@@ -70,6 +70,11 @@ ActiveRecord::Schema.define(version: 2019_07_15_063052) do
   create_table "disks", force: :cascade do |t|
     t.integer "number"
     t.integer "cd_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "end_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

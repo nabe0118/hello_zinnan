@@ -1,18 +1,18 @@
+
 <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
 <% end %>
 
-
 <div class="container">
 
 	<div class="row">
 		<div class="col-xs-4"></div>
-		<div class="col-xs-4"><h1>adminsマイページ</h1></div>
+		<div class="col-xs-4"><h1>管理者マイページ</h1></div>
 		<div class="col-xs-4"></div>
 	</div>
-	<div class="row o-3column testhoge">
+	<div class="row space">
 		<div class="col-xs-3">
 		 <h2 class="h1"><%=link_to '商品一覧', cds_path %></h2>
 		</div>
@@ -23,8 +23,7 @@
 		 <h2 class="h1"><%=link_to '購入履歴',root_path %></h2>
 		</div>
 		<div class="col-xs-3">
-		 <h2 class="h1"><%=link_to 'ユーザー一覧',root_path %></h2>
+		 <h2 class="h1"><%=link_to 'ユーザー一覧', administrator_end_users_path %></h2>
 		</div>
     </div>
-    <div class="testhoge">test</div>
 </div>

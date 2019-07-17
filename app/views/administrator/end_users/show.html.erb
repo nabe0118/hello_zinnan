@@ -1,0 +1,46 @@
+  <h2>＜ユーザー情報＞</h2>
+  <table>
+
+   <tbody>
+  	<tr>
+  		<th>名前</th>
+  		<td><%= @user.family_name %><%= @user.first_name %></td>
+  	</tr>
+  	<tr>
+  		<th>ナマエ</th>
+  		<td><%= @user.sei %><%= @user.mei %></td>
+  	</tr>
+  	<tr>
+  		<th>郵便番号１</th>
+  		<td><%= @user.postal_code %></td>
+  	</tr>
+  	<tr>
+  		<th>住所１</th>
+  		<td><%= @user.address %></td>
+    </tr>
+    <tr>
+    	<th>郵便番号２</th>
+    	<td></td>
+    </tr>
+    <tr>
+    	<th>住所２</th>
+    	<td></td>
+    </tr>
+    <tr>
+    	<th>電話番号</th>
+    	<td></td>
+    </tr>
+    <tr>
+    	<th>メールアドレス</th>
+    	<td><%= @user.email %></td>
+    </tr>
+    <tr>
+    	<th>パスワード</th>
+    	<td><%= @user.password %></td>
+    </tr>
+    <tr>
+    	<th>List Item</th>
+    	<td></td>
+    </tr>
+   </tbody>
+  </table>

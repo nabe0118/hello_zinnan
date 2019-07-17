@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :labels, only:[:new, :create]
     resources :artists, only:[:new, :create]
-
+    resources :end_users, only:[:index,:show,:edit]
   end
 
   devise_for :admins,controllers: {

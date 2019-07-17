@@ -10,11 +10,9 @@ class Devise::Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     if current_user
-    flash[:notice] = "signed in successfully"
         user_path(current_user.id)
     else
-    flash[:notice] = "ログインに失敗しました"
-    root_path
+        root_path
     end
   end
 

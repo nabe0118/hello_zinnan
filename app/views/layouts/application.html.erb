@@ -10,10 +10,17 @@
   </head>
 
   <body>
+     <li class="">
+     <%= link_to '管理者ログイン', new_admin_session_path %>
+    </li>
+     <li>
+      <%= link_to "admin_log out", destroy_admin_session_path, method: :delete %>
+    </li>
     <nav class="navbar navbar-inverse">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
           <span class="app-titile">ECsite</span>
+        </nav>
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
               <%# ここからlink_toとpathを追加%>
@@ -28,9 +35,6 @@
                 </li>
                 <li class="">
                   <%= link_to 'logout',destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
-                </li>
-                <li>
-                  <%= link_to "admin_log out", destroy_admin_session_path, method: :delete %>
                 </li>
               <% else %>
                 <li class="">
@@ -48,7 +52,7 @@
               <%= link_to("URL") do %>
                 <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
               <% end %>
-        </nav>
+      </div>
     </nav>
 
     <%= yield %>
