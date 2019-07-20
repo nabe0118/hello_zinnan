@@ -21,20 +21,13 @@
   		<td><%= @user.postal_code %></td>
   	</tr>
   	<tr>
-  		<th>住所１</th>
+  		<th>住所</th>
   		<td><%= @user.address %></td>
+      <td><%= link_to 'その他の住所', addresses_path %></td>
+      <td><%= link_to '宛先追加',new_address_path %></td>
     </tr>
-    <tr>
-    	<th>郵便番号２</th>
-    	<td></td>
-    </tr>
-    <tr>
-    	<th>住所２</th>
-    	<td></td>
-    </tr>
-    <tr>
     	<th>電話番号</th>
-    	<td></td>
+    	<td><%= @user.phone_number%></td>
     </tr>
     <tr>
     	<th>メールアドレス</th>

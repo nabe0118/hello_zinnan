@@ -1,2 +1,104 @@
-<h1>Administrator::EndUsers#edit</h1>
-<p>Find me in app/views/administrator/end_users/edit.html.erb</p>
+
+<div class="container">
+<h1 class="text-center">ユーザー編集ページ</h1>
+
+ <%= form_for(@user) do |f| %>
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+      <%= f.label :姓 %><br />
+      <%= f.text_field :family_name,  autofocus: true, autocomplete: "姓" %>
+    </div>
+
+
+   <div class="col-xs-6",>
+    <%= f.label :名 %><br />
+    <%= f.text_field :first_name, autocomplete: "名" %>
+   </div>
+
+ </div>
+
+ <div class="row">
+  <div class="col-xs-4"></div>
+  <div class="col-xs-2">
+    <%= f.label :セイ %><br />
+    <%= f.text_field :sei, autocomplete: "セイ" %>
+  </div>
+  <div class="col-xs-6">
+    <div class="max-width">
+    <%= f.label :メイ %><br />
+    <%= f.text_field :mei, autocomplete: "メイ" %>
+  </div>
+  </div>
+ </div>
+
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+    <%= f.label :郵便番号 %><br />
+    <%= f.text_field :postal_code, autocomplete: "郵便番号" %>
+    </div>
+    <div class="col-xs-6"></div>
+   </div>
+
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address, autocomplete: "住所" %>
+   </div>
+    <div class="col-xs-6"></div>
+   </div>
+
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+    <%= f.label :電話番号 %><br />
+    <%= f.text_field :phone_number, autocomplete: "電話番号" %>
+    </div>
+    <div class="col-xs-6"></div>
+   </div>
+
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autocomplete: "メールアドレス" %>
+  </div>
+  <div class="col-xs-6"></div>
+   </div>
+
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+  <div class="col-xs-6"></div>
+   </div>
+
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <div class="col-xs-6"></div>
+   </div>
+
+   <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2">
+    <%= f.submit "更新" %>
+    </div>
+    <div class="col-xs-6"></div>
+   </div>
+
+  <% end %>
+</div>
+
+
+</div>
