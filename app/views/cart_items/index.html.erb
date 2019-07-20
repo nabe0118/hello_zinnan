@@ -1,12 +1,25 @@
-<div class="container">
-  <div class="row">
-    <h1>カート内一覧</h1>
-    <div class="">
-      <% @cart_items.each do |cart| %>
-        <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
-        <%= cart.cd.name %>
-        <%= link_to "CD詳細", cart_item_path(cart.id) %>
-      <% end %>
+<div class="index-content">
+  <div class="container">
+    <div class="row">
+      <h1>カート内一覧</h1>
+        <% @cart_items.each do |cart| %>
+        <div class="col-xs-3">
+          <div class="card">
+            <h4 class="card-header">
+              <%= cart.cd.name %>
+            </h4>
+            <div class="card-image-top">
+              <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
+            </div>
+            <div class="card-body">
+              <h5 class="card-text">¥<%= (cart.cd.price * 1.08).ceil %>(税込)</h5>
+              <p class="card-text"><%= cart.cd.status %></p>
+            </div>
+              <%= link_to "CD詳細", cart_item_path(cart.id), class:"btn btn-primary" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

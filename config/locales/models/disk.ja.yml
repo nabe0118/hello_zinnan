@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    model:
+      disk: ディスク
+    attributes:
+      cd:
+        number: ディスク番号

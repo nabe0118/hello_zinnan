@@ -1,56 +1,76 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4">
-      <h1>CD詳細</h1>
-      <div class="name">
-        タイトル<br>
-        <%= @cd.name %>
-      </div>
-      <div class="image">
-        <%= attachment_image_tag @cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="price">
-        価格(税込):
-        <%= @cd.price %>
-      </div>
-      <div class="stock">
-        在庫数:
-        <%= @cd.stock %>
-      </div>
-      <div class="status">
-        販売状況:
-        <%= @cd.status %>
-      </div>
-      <div class="label">
-        レーベル:
-        <%= @cd.label.name %>
-      </div>
-      <div class="genre">
-        ジャンル:
-        <%= @cd.genre.name %>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="disk-number">
-        <% @cd.disks.each do |disk| %>
-          <%= disk.number %>
-      </div>
-      <div class="music">
-          <% disk.musics.each do |music| %>
-            <%= music.number %>
-            <%= music.name %>
-            <%= music.artist.name %>
-          <% end %>
-      </div>
+<div class="index-content">
+  <div class="container">
+    <div class="row">
+      <% if @cart_item.errors.any? %>
+        <% @cart_item.errors.messages.each do |message| %>
+          <%= message %>
         <% end %>
-        <%= @cart_item.number%>枚
-    </div>
-        <%= link_to "枚数変更", edit_cart_item_path %>
-        <%= link_to "カートから消す", cart_item_path, method: :delete %>
-    <div class="col-xs-4">
+      <% end %>
 
+      <h1>CD詳細</h1>
+
+      <div class="col-xs-4">
+        <div class="card">
+          <h4 class="card-header">
+            <%= @cd.name %>
+          </h4>
+          <div class="card-image-top">
+            <%= attachment_image_tag @cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+            販売状況:<%= @cd.status %>
+            </p>
+            <p class="card-text">
+            在庫数:<%= @cd.stock %>
+            </p>
+          </div>
+        </div>
+        <div class="sheet">
+            カートに<%= @cart_item.number%>枚入っています
+        </div>
+      </div>
+      <div class="col-xs-8">
+        <div class="label">
+          レーベル:<%= @cd.label.name %>
+        </div>
+        <div class="genre">
+          ジャンル:<%= @cd.genre.name %>
+        </div>
+        <h3 class="price">
+          価格(税込):<%= (@cd.price * 1.08).ceil %>円
+        </h3>
+        <% @cd.disks.each do |disk| %>
+          <div class="disk-number">
+            Disk<%= disk.number %>
+          </div>
+          <div class="music">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>曲順</th>
+                  <th>曲名</th>
+                  <th>アーティスト</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% disk.musics.each do |music| %>
+                  <tr>
+                    <td><%= music.number %></td>
+                    <td><%= music.name %></td>
+                    <td><%= music.artist.name %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+          <div class="col-xs-6"></div>
+          <div class="col-xs-6">
+            <%= link_to "枚数変更", edit_cart_item_path, class:"btn btn-primary"%>
+            <%= link_to "カートから消す", cart_item_path, method: :delete, class:"btn btn-danger" %>
+          </div>
+      </div>
     </div>
   </div>
 </div>

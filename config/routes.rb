@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     resources :admin_mypages, only:[:index,:edit]
     resources :cds
     resources :addresses
-    resources :labels, only:[:new, :create]
-    resources :artists, only:[:new, :create]
+    resources :labels, only:[:index, :edit, :create, :update, :destroy]
+    resources :artists, only:[:index, :edit, :create, :update, :destroy]
     resources :end_users, only:[:index,:show,:edit]
   end
 
