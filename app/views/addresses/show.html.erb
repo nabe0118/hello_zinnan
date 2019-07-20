@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1>住所詳細</h1>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">名前</div>
+          <div class="col-xs-6"><%= @address.family_name %><% @address.first_name%></div>
+  </div>
+  <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">ナマエ</div>
+          <div class="col-xs-6"><%= @address.sei %><% @address.mei %></div>
+  </div>
+  <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">住所</div>
+          <div class="col-xs-6"><%= @address.address %></div>
+  </div>
+  <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">郵便番号</div>
+          <div class="col-xs-6"><%= @address.postal_code %></div>
+  </div>
+  <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3">電話番号</div>
+          <div class="col-xs-6"><%= @address.phone_number %></div>
+  </div>
+  <div class="row">
+          <div class="col-xs-6"></div>
+          <div class="col-xs-3"><%= link_to '編集', edit_address_path %></div>
+          <div class="col-xs-3"><%= link_to "消去", address_path(@address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+  </div>
+</div>
