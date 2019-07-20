@@ -2,26 +2,19 @@
   <div class="form-group">
     <%= f.label :disk番号 %><br>
     <%= f.number_field :number %>
-    <%= link_to_remove_association '削除', f, class: 'btn btn-default' %>
-    <table>
-      <thead>
-        <tr>
-          <th>曲順</th>
-          <th>曲名</th>
-          <th>アーティスト</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-          <div  class="music">
-            <%= f.fields_for :musics do |m|  %>
-              <%= render 'music_fields', f: m %>
-            <% end %>
-          </div>
-      </tbody>
-    </table>
-    <div class="links">
-      <%= link_to_add_association '曲を追加',f, :musics,  class: 'btn btn-default'%>
+    <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
+    <div class="row">
+      <div class="col-xs-3">曲順</div>
+      <div class="col-xs-3">曲名</div>
+      <div class="col-xs-6">アーティスト<%= link_to "(アーティストの追加)", administrator_artists_path, class:"btn btn-link" %></div>
     </div>
+      <div  class="music">
+        <%= f.fields_for :musics do |m|  %>
+          <%= render 'music_fields', f: m %>
+        <% end %>
+      </div>
+      <div class="links">
+        <%= link_to_add_association '曲を追加',f, :musics,  class: 'btn btn-default'%>
+      </div>
   </div>
 </div>

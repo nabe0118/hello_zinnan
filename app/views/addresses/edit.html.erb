@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row">
   <div class="col-md-4 col-md-offset-4">
-		<h2>Address変更</h2>
+		<h2>住所情報編集</h2>
 
 	  <div class="form-horizontal" role="form">
         <%= form_for @address do |f| %>
 		  	<div class="form-group">
-		    <%= f.label :familiy_name, "名前" , :class => " control-label" %><br>
-        <%= f.text_field :familiy_name, class: 'form-control', placeholder: "姓",id: "half-form1" %>
+		    <%= f.label :family_name, "名前" , :class => " control-label" %><br>
+        <%= f.text_field :family_name, class: 'form-control', placeholder: "姓",id: "half-form1" %>
 
         <%= f.text_field :first_name, class: 'form-control', placeholder: "名",id: "half-form2"   %><br>
 		  	</div>

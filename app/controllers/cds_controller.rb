@@ -1,5 +1,6 @@
 class CdsController < ApplicationController
   def index
-    @cds = Cd.page(params[:page]).per(9)
+    @q = Cd.ransack(params[:q])
+    @cds = @q.result(distinct: true).page(params[:page]).per(8)
   end
 end

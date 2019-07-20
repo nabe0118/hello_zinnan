@@ -70,3 +70,5 @@ gem "ransack"
 gem 'devise'
 gem 'cocoon'
 gem 'kaminari'
+gem 'rails-i18n'
+gem 'paranoia'

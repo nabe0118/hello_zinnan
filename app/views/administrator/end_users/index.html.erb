@@ -1,0 +1,24 @@
+<h1>会員一覧</h1>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+			<th>名前</th>
+			<th>メールアドレス</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.id %></td>
+			<td><%= user.family_name %></td>
+			<td><%= user.email %></td>
+			<td><%=link_to '詳細',administrator_end_user_path(user.id) %></td>
+			<td><%=link_to '編集',edit_administrator_end_user_path(user.id) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

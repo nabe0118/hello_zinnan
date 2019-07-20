@@ -1,6 +1,6 @@
 class Administrator::CdsController < ApplicationController
   def index
-    @cds = Cd.all
+    @cds = Cd.page(params[:page]).per(8)
   end
 
   def show
@@ -18,6 +18,8 @@ class Administrator::CdsController < ApplicationController
     if @cd.save
       redirect_to administrator_cds_path
     else
+      @disk = @cd.disks.build
+      @music = @disk.musics.build
       render :new
     end
   end
@@ -44,7 +46,7 @@ class Administrator::CdsController < ApplicationController
   private
 
   def cd_params
-    params.require(:cd).permit(:name, :price, :stock, :image, :label_id, :genre_id, disks_attributes:[:id, :number, :_destroy, musics_attributes: [:id, :number, :name, :artist_id, :_destroy]])
+    params.require(:cd).permit(:name, :price, :stock,:status, :image, :label_id, :genre_id, disks_attributes:[:id, :number, :_destroy, musics_attributes: [:id, :number, :name, :artist_id, :_destroy]])
   end
 
 end

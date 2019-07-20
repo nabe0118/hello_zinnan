@@ -4,12 +4,18 @@
       </div>
 <% end %>
 
+<%= search_form_for @q, :url => { :controller => :cds, :action => :index } do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
+  <%= f.submit '検索' %>
+<% end %>
+
 <div class="index-content">
   <div class="container">
     <div class="row">
       <h1 class="header">CD一覧</h1>
         <% @cds.each do |cd| %>
-          <div class="col-lg-3">
+          <div class="col-xs-3">
             <div class="card">
               <h4 class="card-header">
                 <%= cd.name %>
@@ -18,14 +24,13 @@
                 <%= attachment_image_tag cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
               </div>
               <div class="card-body">
-                <h5 class="card-text">¥<%= cd.price %></h5>
+                <h5 class="card-text">¥<%= (cd.price * 1.08).ceil %>(税込)</h5>
                 <p class="card-text"><%= cd.status %></p>
-                <%= link_to "詳細", new_cart_item_path(cd.id), class:"btn" %>
+                <%= link_to "詳細", new_cart_item_path(cd.id), class:"btn btn-primary" %>
               </div>
             </div>
           </div>
           <% end %>
-        </div>
         <%= paginate @cds, class: "paginate" %>
     </div>
   </div>

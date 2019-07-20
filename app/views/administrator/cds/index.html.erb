@@ -1,18 +1,26 @@
-<h1>CD一覧</h1>
 
-<div class="container">
+<div class="index-content">
+  <div class="container">
     <div class="row">
-      <% @cds.each do |cd| %>
-      <div class="box">
-        <div class="hoge">
-        <h2><%= cd.name %></h2>
-        <%= attachment_image_tag @cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200" %><br>
-        <%= cd.status %><br>
-        <b>¥</b>
-        <%= cd.price %><br>
-        <%= link_to "詳細",  administrator_cd_path(cd.id) %>
-        </div>
-      </div>
-      <% end %>
+      <h1 class="header">CD一覧</h1>
+        <% @cds.each do |cd| %>
+          <div class="col-xs-3">
+            <div class="card">
+              <h4 class="card-header">
+                <%= cd.name %>
+              </h4>
+              <div class="card-image-top">
+                <%= attachment_image_tag cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
+              </div>
+              <div class="card-body">
+                <h5 class="card-text">¥<%= (cd.price * 1.08).ceil %>(税込)</h5>
+                <p class="card-text"><%= cd.status %></p>
+                <%= link_to "詳細", administrator_cd_path(cd.id), class:"btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <%= paginate @cds, class: "paginate" %>
     </div>
+  </div>
 </div>
