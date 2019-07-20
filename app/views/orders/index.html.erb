@@ -1,0 +1,62 @@
+<div class="user-content">
+  <div class="container">
+    <div class="row">
+      <h3 class="header">ユーザー情報</h3>
+          <div class="col-lg-3">
+            <div class="user_info">
+              <div class="user-body">
+                <div class="user-text1">
+                <%= @user.phone_number  %>
+                </div>
+                <div class="user-text2">
+                <%= @user.address %>
+                <%= link_to "変更", addresses_path, class:"btn" %>
+                </div>
+                <div class="user-text3">
+                <%= form_for @order do |f| %>
+                <%= f.select :payment_method, Order.payment_methods.keys.to_a,{} %>
+                <%= link_to "変更", "#", class:"btn" %>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="cart_items-content">
+    <div class="container">
+      <div class="row">
+        <h3 class="header">注文商品一覧</h3>
+          <% @cart_items.each do |cart_item| %>
+            <div class="col-lg-3">
+              <div class="cart_items_box">
+                <div class="cart_items1">
+                  <%= @cart_items.cd.name %>
+                </div>
+                <div class="cart_items-image">
+                  <%= attachment_image_tag cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
+                </div>
+                  <div class="cart_items2">
+                  <%= @cart_items.cd.price %>
+                  </div>
+                  <div class="cart_items3">
+                  <%= @cart_items.cd.status %>
+                  </div>
+               </div>
+             </div>
+       </div>
+            <% end %>
+    </div>
+  </div>
+
+  <div class="cart_items-content">
+    <div class="container">
+      <div class="row">
+        <%= link_to "注文を確定する", "#", class: 'btn btn-default' %><br>
+        
+
+      </div>
+   </div>
+</div>
