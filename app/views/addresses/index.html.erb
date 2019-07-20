@@ -1,0 +1,21 @@
+
+<table class="table">
+        <thead>
+            <tr>
+               <th></th>
+               <th>名前</th>
+               <th>住所</th>
+               <th></th>
+               <th></th>
+            </tr>
+        </thead>
+         <% @addresses.each do |address| %>
+        <tbody>
+          <th><%= address.id %></th>
+          <td><%= address.family_name %> <% address.first_name%></td>
+          <td><%= address.address %></td>
+          <td><%= link_to "詳細", address_path(address.id) %></td>
+          <td><%= link_to "消去", address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
+        </tbody>
+</table>
