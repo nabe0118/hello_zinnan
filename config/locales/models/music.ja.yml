@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      music:曲
+    attributes:
+      music:
+        name: 曲名
+        number: 曲番号

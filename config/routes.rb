@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resources :cds
     resources :addresses, only:[:new, :edit, :show, :create, :update, :destroy]
     get ':id/addresses' => 'addresses#index', as: 'addresses_index'
-    resources :labels, only:[:new, :create]
-    resources :artists, only:[:new, :create]
+    resources :labels, only:[:index, :edit, :create, :update, :destroy]
+    resources :artists, only:[:index, :edit, :create, :update, :destroy]
     resources :end_users
   end
 

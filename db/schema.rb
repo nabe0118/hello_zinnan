@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_074149) do
     t.integer "price"
     t.integer "stock"
     t.integer "status", default: 0
-    t.integer "image_id"
+    t.text "image_id"
     t.integer "label_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false

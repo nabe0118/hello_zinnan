@@ -35,6 +35,7 @@ class CartItemsController < ApplicationController
       if @cart_item.update(cart_item_params)
         redirect_to cart_item_path(@cart_item.id)
       else
+        @cd = @cart_item.cd
         render :edit
       end
   end
@@ -42,11 +43,10 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to root_path
+    redirect_to cart_items_path
   end
 
   private
-# :user_id
   def cart_item_params
     params.require(:cart_item).permit(:number, :cd_id, :user_id)
   end

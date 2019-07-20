@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      cart_item: カート
+    attributes:
+      cart_item:
+        number: カートに入れた枚数

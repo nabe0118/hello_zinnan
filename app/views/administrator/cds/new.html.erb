@@ -1,43 +1,46 @@
 <div class="container">
   <div class="row">
     <% if @cd.errors.any? %>
-      <% @cd.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
+      <%= @cd.errors.count %>件のエラーが発生しました
+        <% @cd.errors.full_messages.each do |message| %>
+          ・<%= message %>
+          <% end %>
     <% end %>
 
     <%= form_for @cd, :url => {:action => :create} do |f| %>
     <div class="col-xs-4">
       <h1>CD登録画面</h1>
       <h3>CD</h3>
-      <div class="field">
-        <%= f.label :Label %>
-        <%= f.collection_select :label_id, Label.all, :id, :name, :prompt => true %><br>
+      <div class="row">
+        <%= f.label :Label %><br>
+        <%= f.collection_select :label_id, Label.all, :id, :name, :prompt => true %>
       </div>
-      <%= link_to "Labelを追加する",  new_administrator_label_path %><br>
-      <div class="field">
-        <%= f.label :ジャンル %>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %><br>
+      <div class="row">
+      <%= link_to "Labelを追加する",  administrator_labels_path, class:"btn btn-link" %>
       </div>
-      <div class="field">
+      <div class="row">
+        <%= f.label :ジャンル %><br>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %>
+      </div>
+      <div class="row">
         <%= f.label :Title %><br>
-        <%= f.text_field :name %><br>
+        <%= f.text_field :name %>
       </div>
-      <div class="field">
-        <%= f.label :ジャケット画像（税込） %><br>
-        <%= f.attachment_field :image %><br>
+      <div class="row">
+        <%= f.label :ジャケット画像 %><br>
+        <%= f.attachment_field :image %>
       </div>
-      <div class="field">
-        <%= f.label :値段 %><br>
-        <%=f.number_field :price %><br>
+      <div class="row">
+        <%= f.label :値段 %>(税別) <br>
+        <%= f.number_field :price %>
       </div>
-      <div class="field">
+      <div class="row">
         <%= f.label :在庫数 %><br>
         <%= f.number_field :stock %>
       </div>
     </div>
     <div class="col-xs-8">
-      <h3>diskを追加</h3>
+      <h3>disk</h3>
       <div  class="disks">
         <%= f.fields_for :disks do |d|  %>
           <%= render 'disk_fields', f: d %>
@@ -46,7 +49,7 @@
       <div class="links">
         <%= link_to_add_association 'diskを追加',f, :disks,  class: 'btn btn-default'  %>
       </div>
-      <%= f.submit %>
+      <%= f.submit :class => "btn btn-success" %>
     </div>
     <% end %>
   </div>
