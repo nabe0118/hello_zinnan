@@ -8,13 +8,13 @@ class Devise::Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  def after_sign_in_path_for(resource)
-    if current_user
-        user_path(current_user.id)
-    else
-        root_path
-    end
-  end
+   def after_sign_in_path_for(resource)
+     if current_user
+         user_path(current_user.id)
+     else
+         root_path
+     end
+   end
 
   # POST /resource/sign_in
   # def create
