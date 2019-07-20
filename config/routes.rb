@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
     resources :users
+    resources :orders
     resources :addresses
     resources :cart_items, only:[:index, :show, :edit, :update, :destroy]
     get 'cart_items/:cd_id/new' => 'cart_items#new', as: 'new_cart_item'
