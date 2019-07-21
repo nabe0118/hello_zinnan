@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_07_19_074149) do
 
-
   create_table "addresses", force: :cascade do |t|
     t.string "first_name"
     t.string "sei"
@@ -62,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_074149) do
     t.integer "price"
     t.integer "stock"
     t.integer "status", default: 0
-    t.text "image_id"
+    t.integer "image_id"
     t.integer "label_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
@@ -102,6 +101,20 @@ ActiveRecord::Schema.define(version: 2019_07_19_074149) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.integer "unit_price"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_detais", force: :cascade do |t|
+    t.integer "unit_price"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "status"
     t.integer "payment_method"
@@ -113,7 +126,10 @@ ActiveRecord::Schema.define(version: 2019_07_19_074149) do
     t.string "address"
     t.string "phone_number"
     t.integer "shipping_fee"
-    
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

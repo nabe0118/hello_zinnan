@@ -1,8 +1,39 @@
 <div class="user-content">
   <div class="container">
     <div class="row">
-      <h3 class="header">ユーザー情報</h3>
-          <div class="col-lg-3">
+      <h3 class="header">注文商品一覧</h3>
+        <div class="col-md-4">
+
+              <% sum = 0 %>
+              <% @cart_items.each do |cart | %>
+                <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
+        </div>
+        <div class="col-md-8">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>アルバム名</th>
+                      <th>アーティスト名</th>
+                      <th>価格(税込)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <tr>
+                  <td></td>
+                  <td><%= cart.cd.name %></td>
+                  <td><%= @artist.name %></td>
+                  <td><%= (cart.cd.price * 1.08).ceil %></td>
+                </tr>
+                <% sum = sum + cart.cd.price %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="row">
+          <h3 class="header">ユーザー情報</h3>
+          <div class="col-md-6">
             <div class="user_info">
               <div class="user-body">
                 <div class="user-text1">
@@ -21,42 +52,21 @@
               </div>
             </div>
           </div>
-        </div>
-    </div>
-  </div>
-
-  <div class="cart_items-content">
-    <div class="container">
-      <div class="row">
-        <h3 class="header">注文商品一覧</h3>
-          <% @cart_items.each do |cart_item| %>
-            <div class="col-lg-3">
-              <div class="cart_items_box">
-                <div class="cart_items1">
-                  <%= @cart_items.cd.name %>
-                </div>
-                <div class="cart_items-image">
-                  <%= attachment_image_tag cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
-                </div>
-                  <div class="cart_items2">
-                  <%= @cart_items.cd.price %>
-                  </div>
-                  <div class="cart_items3">
-                  <%= @cart_items.cd.status %>
-                  </div>
-               </div>
-             </div>
-       </div>
-            <% end %>
-    </div>
-  </div>
-
-  <div class="cart_items-content">
-    <div class="container">
-      <div class="row">
+          <div class = "col-md-6">
+       <div class = "order_btn">
         <%= link_to "注文を確定する", "#", class: 'btn btn-default' %><br>
-        
-
       </div>
+      <div class="cd_price">
+        価格(税込):<%= ( sum * 1.08).ceil %>円
+      </h3><br>
+      <div class="sent_price">
+        配送料  500円
+      </div><br>
+      <div class="price">
+        合計金額:<%= ((sum * 1.08)+500).ceil %>円
+      </div>
+      </div >
+      </div>
+     </div>
    </div>
 </div>
