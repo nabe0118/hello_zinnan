@@ -5,7 +5,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
 def after_sign_up_path_for(resource)
-     redirect_to user_path(current_user.id)
+     user_path(current_user.id)
    end
 
 

@@ -1,6 +1,6 @@
-<% if flash[:notice] %>
+<% if flash[:success] %>
       <div class="flash">
-        <%= flash[:notice] %>
+        <%= flash[:success] %>
       </div>
 <% end %>
 
@@ -46,7 +46,7 @@
 
   <div class="edit-unsubscribe">
     <p>
-  	 <%= link_to '編集' %>
+  	 <%= link_to '編集', edit_user_path %>
   	 <%= link_to '退会' %>
     </p>
   </div>

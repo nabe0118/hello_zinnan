@@ -1,2 +1,10 @@
-<h1>Users#destroy</h1>
-<p>Find me in app/views/users/destroy.html.erb</p>
+<div class="" style="text-align: center;">
+
+  <h1>本当に退会しますか！？</h1>
+
+   <p>
+    <%= link_to 'Yes', destroy_user_path(user.id) %>
+    <%= link_to 'No', user_path(current_user.id) %>
+   </p>
+
+</div>
