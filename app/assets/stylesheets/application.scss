@@ -49,3 +49,50 @@ padding-left: 10px;
 .remember_me{
   padding-left: 10px;
 }
+
+.o-heading {
+    display: block;
+    width: 100%;
+    font-size: 4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 5px 0;
+    margin: 0px auto 20px auto;
+    max-width: 500px;
+    font-family: Georgia, serif;
+}
+
+.c-signup {
+    min-width: 300px;
+    max-width: 500px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+
+    &__field {
+
+        > input[type] {
+            width: 100%;
+        }
+
+        &--fill {
+            grid-column: span 2;
+        }
+    }
+
+    &__button {
+        grid-column: span 2;
+        text-align: right;
+    }
+}
+
+.boilerform{
+  background-color :#EEEEEE;
+  margin: 0 auto;
+}
+
+.navbar{
+  margin :0 auto;
+}
