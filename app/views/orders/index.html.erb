@@ -32,8 +32,8 @@
         </div>
     </div>
     <div class="row">
-          <h3 class="header">ユーザー情報</h3>
           <div class="col-md-6">
+          <h3 class="header">ユーザー情報</h3>
             <div class="user_info">
               <div class="user-body">
                 <div class="user-text1">
@@ -41,30 +41,32 @@
                 </div>
                 <div class="user-text2">
                 <%= @user.address %>
-                <%= link_to "変更", addresses_path, class:"btn" %>
+
+                <!-- 下にパスを追加する -->
+                <%= link_to "変更", "#", class:"btn btn-primary" %>
                 </div>
                 <div class="user-text3">
                 <%= form_for @order do |f| %>
                 <%= f.select :payment_method, Order.payment_methods.keys.to_a,{} %>
-                <%= link_to "変更", "#", class:"btn" %>
                 <% end %>
                 </div>
               </div>
             </div>
           </div>
           <div class = "col-md-6">
-       <div class = "order_btn">
-        <%= link_to "注文を確定する", "#", class: 'btn btn-default' %><br>
-      </div>
+      <h3 class="header">合計金額</h3>
       <div class="cd_price">
         価格(税込):<%= ( sum * 1.08).ceil %>円
       </h3><br>
       <div class="sent_price">
-        配送料  500円
+        配送料 500円
       </div><br>
       <div class="price">
         合計金額:<%= ((sum * 1.08)+500).ceil %>円
       </div>
+      <div class = "order_btn">
+       <%= link_to "注文を確定する", "#", class: "btn btn-success" %><br>
+     </div>
       </div >
       </div>
      </div>

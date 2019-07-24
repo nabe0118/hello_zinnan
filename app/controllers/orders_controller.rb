@@ -11,15 +11,6 @@ def index
   @disk = @cd.disks.first
   @music = @disk.musics.first
   @artist = @music.artist
-  @cart_items_with_sum =  @cart_items.each_with_object([]) do |cart_item, array|
-    cart_item_cd = cart_item.cd
-    array << {
-      name: cart_item_cd.name,
-      price: cart_item_cd.price,
-      number: cart_item.number,
-      sum: cart_item_cd.price * cart_item.number
-    }
-  end
 end
 
 def show
