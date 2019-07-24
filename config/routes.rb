@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     }
   # end
 
+
+    resources :orders
     resources :addresses
     resources :users
     resources :cart_items, only:[:index, :show, :edit, :update, :destroy]
