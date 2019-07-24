@@ -1,4 +1,22 @@
 class CartItemsController < ApplicationController
+
+  before_action :correct_user, only:[:show, :index, :edit, :create, :update, :destroy]
+  before_action :check_id, only:[:create]
+
+  def correct_user
+    redirect_to cds_path unless current_user
+  end
+
+  def check_id
+      cart_items = current_user.cart_items
+        cart_items.each do |cart|
+          if cart.cd.id == params[:cd_id].to_i
+            flash[:notice] = "既に同じ商品がカートに入っています"
+            redirect_to cart_items_path
+          end
+        end
+  end
+
   def new
     @cd = Cd.find(params[:cd_id])
     @cart_item = @cd.cart_items.build
@@ -25,8 +43,6 @@ class CartItemsController < ApplicationController
     @cart_item.user_id = current_user.id
     if @cart_item.save
       redirect_to root_path
-    else
-      render :new
     end
   end
 

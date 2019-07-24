@@ -1,14 +1,14 @@
-<div class="index-content">
+<div style="background-image:url(<%= asset_path "cd_image_1.jpeg" %>)", class="back">
   <div class="container">
-    <div class="row">
-      <% if @cart_item.errors.any? %>
-        <% @cart_item.errors.messages.each do |message| %>
-          <%= message %>
-        <% end %>
+    <% if @cart_item.errors.any? %>
+      <% @cart_item.errors.messages.each do |message| %>
+        <%= message %>
       <% end %>
+    <% end %>
 
-      <h1>CD詳細</h1>
+    <h1>CD詳細</h1>
 
+    <div class="row", id="board">
       <div class="col-xs-4">
         <div class="card">
           <h4 class="card-header">
@@ -65,12 +65,14 @@
             </table>
           </div>
         <% end %>
-          <div class="col-xs-6"></div>
-          <div class="col-xs-6">
+      </div>
+    </div>
+    <div class="row", id="newcart" >
+          <div class="col-xs-8"></div>
+          <div class="col-xs-4">
             <%= link_to "枚数変更", edit_cart_item_path, class:"btn btn-primary"%>
             <%= link_to "カートから消す", cart_item_path, method: :delete, class:"btn btn-danger" %>
           </div>
-      </div>
     </div>
   </div>
 </div>

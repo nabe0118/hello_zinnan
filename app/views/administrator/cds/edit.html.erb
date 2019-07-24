@@ -16,7 +16,7 @@
         <%= f.collection_select :label_id, Label.all, :id, :name, :prompt => true %>
       </div>
       <div class="row">
-      <%= link_to "Labelを追加する",  administrator_labels_path, class:"btn btn-link" %>
+      <%= link_to "Labelを変更する",  administrator_labels_path, class:"btn btn-link" %>
       </div>
       <div class="row">
         <%= f.label :ジャンル %><br>
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="col-xs-8">
-      <h3>diskを追加</h3>
+      <h3>diskを編集</h3>
       <div  class="disks">
         <%= f.fields_for :disks do |d|  %>
           <%= render 'disk_fields', f: d %>

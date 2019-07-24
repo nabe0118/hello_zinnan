@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
@@ -25,12 +27,13 @@
                 <li class="">
                   <%= link_to ' logout',destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
                 </li>
-                <%= link_to("cart_items") do %>
+                <%= link_to (cart_items_path) do %>
                   <span class = "glyphicon glyphicon-shopping-cart" = "true"></span>
                 <% end %>
                 <% elsif admin_signed_in? %>
                 <li>
-                <%= link_to ' ECsite', cds_path, class: "glyphicon glyphicon-home" %>
+                <%= link_to '  ECsite', administrator_cds_path, class: "glyphicon glyphicon-home" %>
+
                 </li>
                 <li class="">
                 <%= link_to ' 管理者ページ', administrator_admin_mypages_path, class: "glyphicon glyphicon-user" %>
@@ -55,16 +58,19 @@
 
       </div>
     </nav>
+
     <%= yield %>
 
   </body>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-md-offset-9">
-        <p>CopyRight hello zinnan.inc</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-md-offset-9">
+          <p>CopyRight hello zinnan.inc</p>
+        </div>
       </div>
     </div>
-  </div>
+  </footer>
 
 </html>

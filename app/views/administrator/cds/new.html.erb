@@ -15,7 +15,7 @@
         <%= f.label :Label %><br>
         <%= f.collection_select :label_id, Label.all, :id, :name, :prompt => true %>
       </div>
-      <div class="row">
+      <div class="row"> 
       <%= link_to "Labelを追加する",  administrator_labels_path, class:"btn btn-link" %>
       </div>
       <div class="row">

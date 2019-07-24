@@ -1,14 +1,15 @@
-<div class="index-content">
+<div style="background-image:url(<%= asset_path "cd_image_3.jpeg" %>)", class="back">
   <div class="container">
-    <div class="row">
+
       <% if @cart_item.errors.any? %>
         <% @cart_item.errors.messages.each do |message| %>
           <%= message %>
         <% end %>
       <% end %>
 
-      <h1>CD詳細</h1>
+    <h1>CD詳細</h1>
 
+    <div class="row", id="board">
       <div class="col-xs-4">
         <div class="card">
           <h4 class="card-header">
@@ -62,14 +63,15 @@
             </table>
           </div>
         <% end %>
-          <div class="col-xs-6"></div>
-          <div class="col-xs-6">
-            <%= form_for @cart_item do |f| %>
-                <%= f.label :枚数 %>
-                <%= f.number_field :number %>
-                <%= f.submit '修正', class:"btn btn-success"%>
-            <% end %>
-          </div>
+      </div>
+    </div>
+    <div class="row", id="newcart">
+      <div class="col-xs-8"></div>
+      <div class="col-xs-4">
+        <%= form_for @cart_item do |f| %>
+          <%= f.select :number, stock_array_maker(@cd.stock) %>
+          <%= f.submit '修正', class:"btn btn-default"%>
+        <% end %>
       </div>
     </div>
   </div>
