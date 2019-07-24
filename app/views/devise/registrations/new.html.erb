@@ -1,110 +1,55 @@
-<%= render "devise/shared/error_messages", resource: resource %>
-
-<div class="container">
-  <h1 class="text-center">会員登録</h1>
-
- <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-      <%= f.label :姓 %><br />
-      <%= f.text_field :family_name,  autofocus: true, autocomplete: "姓" %>
-    </div>
-
-
-   <div class="col-xs-6",>
-    <%= f.label :名 %><br />
-    <%= f.text_field :first_name, autocomplete: "名" %>
-   </div>
-
- </div>
-
- <div class="row">
-  <div class="col-xs-4"></div>
-  <div class="col-xs-2">
-    <%= f.label :セイ %><br />
-    <%= f.text_field :sei, autocomplete: "セイ" %>
-  </div>
-  <div class="col-xs-6">
-    <div class="max-width">
-    <%= f.label :メイ %><br />
-    <%= f.text_field :mei, autocomplete: "メイ" %>
-  </div>
-  </div>
- </div>
-
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-    <%= f.label :郵便番号 %><br />
-    <%= f.text_field :postal_code, autocomplete: "郵便番号" %>
-    </div>
-    <div class="col-xs-6"></div>
-   </div>
-
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-    <%= f.label :住所 %><br />
-    <%= f.text_field :address, autocomplete: "住所" %>
-   </div>
-    <div class="col-xs-6"></div>
-   </div>
-
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-    <%= f.label :電話番号 %><br />
-    <%= f.text_field :phone_number, autocomplete: "電話番号" %>
-    </div>
-    <div class="col-xs-6"></div>
-   </div>
-
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autocomplete: "メールアドレス" %>
-  </div>
-  <div class="col-xs-6"></div>
-   </div>
-
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  <div class="col-xs-6"></div>
-   </div>
-
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <div class="col-xs-6"></div>
-   </div>
-
-   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-2">
-    <%= f.submit "Sign up" %>
-    </div>
-    <div class="col-xs-6"></div>
-   </div>
-
-  <% end %>
-</div>
+    <h1 class="o-heading">SignUp</h1>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)), :html => {:class => "boilerform"} do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="c-signup">
+            <div class="c-signup__field">
+                <%= f.label :姓, class:'c-label' %>
+                <%= f.text_field :family_name,  autofocus: true, autocomplete: "姓",class:'c-input-field' %>
+            </div>
+            <div class="c-signup__field">
+                <%= f.label :名, class:'c-label' %><br />
+                <%= f.text_field :first_name, autocomplete: "名",class:'c-input-field' %>
+            </div>
+            <div class="c-signup__field">
+                <%= f.label :セイ, class:'c-label' %><br />
+                <%= f.text_field :sei, autocomplete: "セイ",class:'c-input-field' %>
+            </div>
+            <div class="c-signup__field">
+                 <%= f.label :メイ, class:'c-label' %><br />
+                 <%= f.text_field :mei, autocomplete: "メイ",class:'c-input-field' %>
+            </div>
+            <div class="c-signup__field c-signup__field--fill">
+                <%= f.label :郵便番号,class:'c-label' %><br />
+                <%= f.text_field :postal_code, autocomplete: "郵便番号", class:'c-input-field' %>
+            </div>
+            <div class="c-signup__field c-signup__field--fill">
+                <%= f.label :住所,class:'c-label' %><br />
+                <%= f.text_field :address, autocomplete: "住所",class:'c-input-field' %>
+            </div>
+            <div class="c-signup__field c-signup__field--fill">
+                <%= f.label :電話番号,class:'c-label' %><br />
+                <%= f.text_field :phone_number, autocomplete: "電話番号",class:'c-input-field',placeholder:'ハイフンなしで入力してください' %>
+            </div>
+            <div class="c-signup__field c-signup__field--fill">
+                <%= f.label :メールアドレス,class:'c-label' %><br />
+                <%= f.email_field :email, autocomplete: "メールアドレス",class:'fc-input-field' %>
+            </div>
+            <div class="c-signup__field c-signup__field--fill">
+                <%= f.label :password,class:'c-label' %>
+                <% if @minimum_password_length %>
+                <p class="form-signup">(<%= @minimum_password_length %>文字以上で入力してください)</p>
+                <% end %>
+                <%= f.password_field :password, autocomplete: "new-password",class:'c-input-field' %>
+            </div>
+            <div class="c-signup__field c-signup__field--fill">
+                <%= f.label :パスワード確認,class:'c-label' %><br />
+                <%= f.password_field :パスワード確認, autocomplete: "new-password",class:'c-input-field' %>
+            </div>
+            <div class="c-signup__button">
+                <%= f.submit "Sign up",class:"c-button" %>
+            </div>
+        </div>
+      <% end %>
 
 
-</div>
-
-<%= render "devise/shared/links" %>
-
-
-
+    <%= render "devise/shared/links" %>

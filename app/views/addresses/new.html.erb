@@ -8,6 +8,7 @@
 
 				      <div class="form-horizontal" role="form">
 			       		 <%= form_for @address, :url => {:controller => :addresses, :action => :create } do |f| %>
+			       		 <%= render 'layouts/errors_messages', model: f.object %>
 					  		<div class="form-group">
 					  	  	  <%= f.label :family_name, "名前" , :class => " control-label" %><br>
 			      			  <%= f.text_field :family_name, class: 'form-control', placeholder: "姓",id: "half-form1" %>
@@ -31,7 +32,7 @@
 
 							<div class="form-group">
 			                   <%= f.label :phone_number, "電話番号 ", :class => " control-label" %>
-			                   <%= f.text_field :phone_number, class: 'form-control', placeholder: "電話番号を入力して下さい。"  %><br>
+			                   <%= f.telephone_field :phone_number, class: 'form-control', placeholder: "電話番号を入力してくだい"  %><br>
 						    </div>
 
 						  <div class="form-group">
