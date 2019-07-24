@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_074149) do
+ActiveRecord::Schema.define(version: 2019_07_24_060324) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "first_name"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_074149) do
     t.integer "price"
     t.integer "stock"
     t.integer "status", default: 0
-    t.integer "image_id"
+    t.text "image_id"
     t.integer "label_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
@@ -97,20 +97,6 @@ ActiveRecord::Schema.define(version: 2019_07_19_074149) do
     t.string "name"
     t.integer "disk_id"
     t.integer "artist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "order_details", force: :cascade do |t|
-    t.integer "unit_price"
-    t.integer "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "order_detais", force: :cascade do |t|
-    t.integer "unit_price"
-    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
