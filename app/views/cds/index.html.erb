@@ -1,13 +1,13 @@
-<% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-<% end %>
 <div style="background-image:url(<%= asset_path "cd_image_2.jpeg" %>)", class="welcome">
 </div>
 <div class="index-content">
   <div class="container">
     <div class="row">
+      <% if flash[:notice] %>
+            <div class="flash">
+              <%= flash[:notice] %>
+            </div>
+      <% end %>
       <div class="row">
         <div class="search">
           <%= search_form_for @q, :url => { :controller => :cds, :action => :index } do |f| %>
