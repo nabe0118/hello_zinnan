@@ -1,24 +1,16 @@
-<div class="index-content">
+<div style="background-image:url(<%= asset_path "cart_image.jpeg" %>)", class="back">
   <div class="container">
+    <h1>カート内一覧</h1>
     <div class="row">
-      <h1>カート内一覧</h1>
         <% @cart_items.each do |cart| %>
-        <div class="col-xs-3">
-          <div class="card">
-            <h4 class="card-header">
-              <%= cart.cd.name %>
-            </h4>
-            <div class="card-image-top">
-              <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
-            </div>
-            <div class="card-body">
-              <h5 class="card-text">¥<%= (cart.cd.price * 1.08).ceil %>(税込)</h5>
-              <p class="card-text"><%= cart.cd.status %></p>
-            </div>
-              <%= link_to "CD詳細", cart_item_path(cart.id), class:"btn btn-primary" %>
+          <div class="col-xs-3">
+            <%= link_to (cart_item_path(cart.id)) do %>
+              <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%><br>
+            <% end %>
+            <%= cart.cd.name %>
           </div>
-        </div>
         <% end %>
+        </div><div class="debottom">
       </div>
     </div>
   </div>

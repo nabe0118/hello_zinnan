@@ -1,4 +1,7 @@
 class Administrator::CdsController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def index
     @cds = Cd.page(params[:page]).per(8)
   end

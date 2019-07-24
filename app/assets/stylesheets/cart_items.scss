@@ -1,3 +1,29 @@
 // Place all the styles related to the cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.back{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#board{
+  background-color: rgba( 0, 0, 0, 0.8);
+  color:  rgb(255, 255, 255);
+}
+
+#newcart{
+  background-color: rgba( 0, 0, 0, 0.8);
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+}
+
+.debottom{
+  margin-bottom: 50px;
+}
+
+.cart_flash{
+  color: rgb(255, 255, 255)
+}
