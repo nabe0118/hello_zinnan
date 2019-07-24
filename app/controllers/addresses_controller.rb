@@ -15,7 +15,8 @@ class AddressesController < ApplicationController
 	   @address = Address.new(address_params)
 	   @address.user_id = current_user.id
 	  if @address.save
-	  redirect_to user_path(current_user.id)
+	  	flash[:success] = '住所情報を登録しました'
+	     redirect_to user_path(current_user.id)
 	  else
 	  render :new
 	  end
@@ -29,6 +30,7 @@ class AddressesController < ApplicationController
 		address = Address.find(params[:id])
 		address.user_id = current_user.id
 		if  address.update(address_params)
+			flash[:success] = '住所情報を編集しました'
 		redirect_to user_path(current_user.id)
 	    else
 	    render :edit
@@ -38,6 +40,7 @@ class AddressesController < ApplicationController
 	def destroy
 		address = Address.find(params[:id])
 		if address.destroy
+			flash[:success] = '住所情報を削除しました'
 			redirect_to user_path(current_user.id)
 		else
 			render :index

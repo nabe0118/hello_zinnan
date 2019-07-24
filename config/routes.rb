@@ -15,24 +15,23 @@ Rails.application.routes.draw do
     resources :end_users
   end
 
-  devise_for :admins,controllers: {
+    devise_for :admins,controllers: {
       sessions: 'devise/admins/sessions',
       registrations: 'devise/admins/registrations',
       passwords: 'devise/admins/passwords'
     }
 
-    # scope module: 'devise' do
+    #scope module: 'devise' do
     devise_for :users, controllers: {
       sessions: 'devise/users/sessions',
       registrations: 'devise/users/registrations',
       passwords: 'devise/users/passwords'
     }
-  # end
-
+   #end
 
     resources :orders
     resources :addresses
-    resources :users
+    resources :users#, only:[:show, :edit, :update, :destroy, :index]
     resources :cart_items, only:[:index, :show, :edit, :update, :destroy]
     get 'cart_items/:cd_id/new' => 'cart_items#new', as: 'new_cart_item'
     post 'cart_items/:cd_id/create' => 'cart_items#create', as: 'create_cart_items'
