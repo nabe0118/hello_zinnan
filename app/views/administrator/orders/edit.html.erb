@@ -1,8 +1,55 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h3 class="header">ユーザー情報一覧</h3>
-
-      </div>
+      <div class="col-md-10 col-md-offset-1">
+        <h3 class="header">注文情報一覧</h3>
+        <%= form_for [:administrator, @order] do |f| %>
+        <table class="table">
+                <thead>
+                    <tr>
+                      <th>購入者</th>
+                      <th>氏名</th>
+                      <th>郵便番号</th>
+                      <th>住所</th>
+                       <th>電話番号</th>
+                       <th>支払い方法</th>
+                       <th>支払い総額</th>
+                       <th>ステータス</th>
+                       <th>編集</th>
+                       <th>消去</th>
+                    </tr>
+                </thead>
+                  <tbody>
+                      <td><%= @order.user.family_name %></td>
+                    <% if @order.address_id.nil? %>
+                      <td><%= @order.user.family_name  %><% @order.user.first_name  %></td>
+                      <td><%= @order.user.postal_code %></td>
+                      <td><%= @order.user.address %></td>
+                      <td><%= @order.user.phone_number %></td>
+                    <% else %>
+                        <td><%= @order.address.family_name %></td>
+                        <td><%= @order.address.postal_code %></td>
+                        <td><%= @order.address.address %></td>
+                        <td><%= @order.address.phone_number %></td>
+                    <%  end %>
+                      <td><%= @order.payment_method %></td>
+                      <td><%= @order.total_price%></td>
+                      <td><%= f.select :status, Order.statuses.keys.to_a,{}%></td>
+                      <td><%= f.submit "保存"%></td>
+                  </tbody>
+         </table>
+         <table>
+          <% @order.order_details.each do |detail| %>
+           <thead>
+             <tr>
+               <th>アルバム名</th>
+             </tr>
+           </thead>
+           <tbody>
+               <td><%= detail.cd.name%></td>
+           </tbody>
+          <% end %>
+         </table>
+         <% end %>
+     </div>
    </div>
 </div>
