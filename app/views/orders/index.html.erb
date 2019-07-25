@@ -12,7 +12,7 @@
 
       <%= form_for @order do |f| %>
         <% @cart_items.each do |cart | %>
-          <div class="row">
+          <div class="row" id="cart_row">
             <div class="col-xs-4">
               <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
             </div>

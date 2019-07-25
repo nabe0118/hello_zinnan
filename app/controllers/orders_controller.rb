@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :check_carts
+  before_action :check_carts, only:[:index, :create]
   before_action :check_stock, only:[:create]
 
   def check_carts
@@ -36,7 +36,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-  @order = Order.find(params[:id])
+  @user = User.find(params[:id])
+  @orders = current_user.orders
   end
 
   def create

@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <h2>購入履歴</h2>
+    <div class="col-xs-10 col-xs-offset-1">
+      <% @orders.each do |order| %>
+        <div class="order-uni">
+          <h4>購入者：<%= current_user.family_name %></h4>
+          <div class="shipping" >
+            <h5>送付先</h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>購入日</th>
+                  <th>名前</th>
+                  <th>郵便番号</th>
+                  <th>住所</th>
+                  <th>電話番号</th>
+                  <th>金額</th>
+                  <th>支払い方法</th>
+                  <th>配送状況</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= order.created_at %></td>
+                  <% if order.address_id.nil? %>
+                    <td>
+                      <%= @user.family_name %><%= @user.first_name %>
+                    </td>
+                    <td>
+                      <%= @user.postal_code %>
+                    </td>
+                    <td>
+                      <%= @user.address %>
+                    </td>
+                    <td>
+                      <%= @user.phone_number  %>
+                    </td>
+                  <% else %>
+                    <td>
+                      <%= order.address.family_name %><%= order.address.first_name %>
+                    </td>
+                    <td>
+                      <%= order.address.postal_code %>
+                    </td>
+                    <td>
+                      <%= order.address.address %>
+                    </td>
+                    <td>
+                      <%= order.address.phone_number  %>
+                    </td>
+                  <% end %>
+                  <td><%= order.total_price %></td>
+                  <td><%= order.payment_method %></td>
+                  <td><%= order.status %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="order-detail" >
+            <h5>購入商品</h5>
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>商品名</th>
+                      <th>単価</th>
+                      <th>枚数</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% order.order_details.each do |detail| %>
+                      <tr>
+                        <td>
+                          <%= attachment_image_tag detail.cd, :image, :fill, 30,30, format: 'jpeg', fallback: "no_image.png" , size:"30x30"%>
+                        </td>
+                        <td><%= detail.cd.name %></td>
+                        <td><%= (detail.uni_price * 1.08).ceil %></td>
+                        <td><%= detail.number %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

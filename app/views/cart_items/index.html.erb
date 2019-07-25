@@ -8,10 +8,11 @@
               <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%><br>
             <% end %>
             <%= cart.cd.name %>
+          </div>
         <% end %>
-        <%= link_to "購入する", orders_path, class:"btn btn-default"  %>
         </div>
         <div class="debottom">
+          <%= link_to "購入する", orders_path, class:"btn btn-default"  %>
         </div>
       </div>
     </div>
