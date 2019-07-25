@@ -43,18 +43,20 @@
           <h3 class="header">ユーザー情報</h3>
             <div class="user_info">
               <div class="user-body">
+                <div class="user-text0">
+                  <label>お名前</label>
+                  <%= @user.family_name  %><%= @user.first_name%>
+                </div>
                 <div class="user-text1">
+                  <label>電話番号</label>
                 <%= @user.phone_number  %>
                 </div>
                 <div class="user-text2">
                   <% @addresses.each do |address| %>
                       <label><%= f. radio_button :address_id, "#{address.id}" %></label>
-                      <label>郵便番号</label>
-                      <%= address.postal_code %>
+                      <label>住所</label>
+                      <%= address.address %><br>
                   <% end %>
-
-                <!-- 下にパスを追加する -->
-                <%= link_to "変更", "#", class:"btn btn-primary" %>
                 </div>
                 <div class="user-text3">
                 <%= f.select :payment_method, Order.payment_methods.keys.to_a,{} %>
@@ -74,7 +76,7 @@
               <%= f.hidden_field :total_price, :value => "#{((sum * 1.08)+500).ceil}" %>
             </div>
             <div class = "order_btn">
-              <%= f.submit :class =>  "btn btn-success" %><br>
+              <%= f.submit "購入確定", :class =>  "btn btn-success" %><br>
             </div>
           </div >
       </div>
