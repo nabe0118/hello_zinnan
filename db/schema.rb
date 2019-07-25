@@ -151,9 +151,9 @@ ActiveRecord::Schema.define(version: 2019_07_24_162346) do
     t.string "sei", null: false
     t.string "mei", null: false
     t.string "postal_code", null: false
-    t.string "address", null: false
     t.string "phone_number"
     t.datetime "deleted_at"
+    t.string "address"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
