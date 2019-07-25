@@ -18,10 +18,16 @@ class Administrator::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update
-      flash[:notice] = "編集完了しました。"
+    @order.update(order_params)
+      flash[:notice] = "変更完了しました。"
     redirect_to administrator_order_path
+
   end
 
+  private
+
+    def order_params
+      params.require(:order).permit(:status)
+    end
 
 end
