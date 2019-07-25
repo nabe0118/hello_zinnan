@@ -66,6 +66,7 @@ class OrdersController < ApplicationController
       @disk = @cd.disks.first
       @music = @disk.musics.first
       @artist = @music.artist
+      flash[:notice] = "購入ありがとうございました。"
       render :index
     end
   end

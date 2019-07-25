@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h3 class="header">ユーザー情報一覧</h3>
+      <div class="col-md-10 col-md-offset-1">
+        <h3 class="header">注文情報一覧</h3>
         <table class="table">
                 <thead>
                     <tr>
@@ -9,24 +9,26 @@
                       <th>郵便番号</th>
                       <th>住所</th>
                        <th>電話番号</th>
+                      <th>アルバム名</th>
                        <th>支払い方法</th>
                        <th>支払い総額</th>
                        <th>編集</th>
                        <th>消去</th>
                     </tr>
                 </thead>
-                 <% @orders.each do |order| %>
-                <tbody>
-                  <th><%= order.user.family_name  %><% order.user.first_name  %></th>
-                  <td><%= order.user.postal_code %></td>
-                  <td><%= order.user.address %></td>
-                  <td><%= order.user.phone_number %></td>
-                  <td><%= order.payment_method %></td>
-                  <td><%= order.total_price%></td>
-                  <td><%= link_to "詳細", "#"%></td>
-                  <td><%= link_to "消去", "#", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-                  <% end %>
-                </tbody>
+                  <tbody>
+                      <th><%= @order.user.family_name  %><% @order.user.first_name  %></th>
+                      <td><%= @order.user.postal_code %></td>
+                      <td><%= @order.user.address %></td>
+                      <td><%= @order.user.phone_number %></td>
+                      <% @order_details.each do |detail| %>
+                      <td><%= detail.cd.name%></td>
+                      <% end %>
+                      <td><%= @order.payment_method %></td>
+                      <td><%= @order.total_price%></td>
+                      <td><%= link_to "編集", "#"%></td>
+                      <td><%= link_to "消去", "#", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                  </tbody>
          </table>
      </div>
    </div>
