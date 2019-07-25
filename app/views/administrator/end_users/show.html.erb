@@ -1,39 +1,59 @@
-  <h2>＜ユーザー情報＞</h2>
-  <table>
 
-   <tbody>
-    <tr>
-      <th>名前</th>
-      <td><%= @user.family_name %> <%= @user.first_name %></td>
-    </tr>
-    <tr>
-      <th>ナマエ</th>
-      <td><%= @user.sei %><%= @user.mei %></td>
-    </tr>
-    <tr>
-      <th>郵便番号１</th>
-      <td><%= @user.postal_code %></td>
-      <td><%= link_to 'その他の住所', administrator_addresses_index_path %></td>
-    </tr>
-    <tr>
-      <th>住所１</th>
-      <td><%= @user.address %></td>
-    </tr>
-      <th>電話番号</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @user.email %></td>
-    </tr>
-   </tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="user-info">ユーザー情報</h2>
+        <table class="table table-striped user-info-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+           <tbody>
+              <tr>
+                <th>名前</th>
+                <td><%= @user.family_name %><%= @user.first_name %></td>
+              </tr>
 
-  
+              <tr>
+                <th>ナマエ</th>
+                <td><%= @user.sei %><%= @user.mei %></td>
+              </tr>
 
-  <div class="edit-unsubscribe">
-    <p>
-     <%= link_to '編集',edit_administrator_end_user_path %>
-     <%= link_to '消去', administrator_end_user_path, method: :delete %>
-    </p>
+              <tr>
+                <th>電話番号</th>
+                <td><%= @user.phone_number%></td>
+              </tr>
+
+              <tr>
+                <th>メールアドレス</th>
+                <td><%= @user.email %></td>
+              </tr>
+
+              <tr>
+                <th>郵便番号</th>
+                <td><%= @user.postal_code %></td>
+              </tr>
+
+              <tr>
+                <th>住所</th>
+                  <td><% @addresses.each do |address| %>
+                      <li><%= link_to @user.address , address_path%></li>
+                      <% end %>
+                  </td>
+              </tr>
+
+              <tr>
+                <th>管理者メニュー</th>
+                <td>
+                  <h4 class="user-menu"><%= link_to "編集", edit_administrator_end_user_path(@user),class:"label label-info" %></h4>
+                  <h4 class="user-menu"><%= link_to "削除", administrator_end_user_path(@user),class:"label label-info", method: :delete, "data-confirm" => "本当に削除しますか？" %></h4>
+                  <h4 class="user-menu"><%= link_to "購入履歴", edit_user_path(@user),class:"label label-info" %></h4>
+                </td>
+              </tr>
+           </tbody>
+        </table>
+      </div>
   </div>
+</div>

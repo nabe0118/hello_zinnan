@@ -8,7 +8,7 @@ class AddressesController < ApplicationController
 	end
 
 	def show
-		@address = Address.find(params[:id])
+       @address = Address.find(params[:id])
 	end
 
 	def create
@@ -50,6 +50,10 @@ class AddressesController < ApplicationController
   private
 
   def address_params
-  	params.require(:address).permit(:family_name, :first_name, :sei, :mei, :postal_code, :address, :phone_number,)
+  	params.require(:address).permit(:family_name, :first_name, :sei, :mei, :postal_code, :address, :phone_number)
+  end
+
+  def user_params
+  	params.require(:user).permit(:family_name, :first_name, :sei, :mei, :postal_code, :address, :phone_number)
   end
 end

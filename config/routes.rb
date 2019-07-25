@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
     resources :orders
     resources :addresses
-    resources :users#, only:[:show, :edit, :update, :destroy, :index]
+    resources :users, only:[:show, :edit, :update, :destroy,]
     resources :cart_items, only:[:index, :show, :edit, :update, :destroy]
     get 'cart_items/:cd_id/new' => 'cart_items#new', as: 'new_cart_item'
     post 'cart_items/:cd_id/create' => 'cart_items#create', as: 'create_cart_items'

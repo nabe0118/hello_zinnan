@@ -3,21 +3,40 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+# after_action :create_address
+ # after_action :create_address, only:[:create]
 
-def after_sign_up_path_for(resource)
-     user_path(current_user.id)
-   end
 
+  def after_sign_up_path_for(resource)
+          user_path(current_user.id)
+      end
+
+# def create_address
+#   user = current_user
+#   address = Address.new(family_name:user.family_name, )
+  # address.family_name = user.family_name
+  # address.first_name = user.first_name
+  # address.sei = user.sei
+  # address.mei = user.mei
+  # address.postal_code = user.postal_code
+  # address.phone_number = user.phone_number
+  # address.address = user.address
+  # address.save
+# end
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+   # def new
+   #   @user = User.new
+   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   # def create
+   #  @user = User.new(user_params)
+   #  @user.address.build
+   #  address = Address.new(family_name:user.family_name, first_name:user.first_name, sei:user.sei, mei:user.mei, postal_code:user.postal_code,
+   #                         phone_number:user.phone_number,adress:user.address)
+   #  @user.save
+   # end
 
   # GET /resource/edit
   # def edit
@@ -64,4 +83,20 @@ def after_sign_up_path_for(resource)
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+# private
+
+
+#   def user_params
+#     params.require(:user).permit(:family_name, :first_name, :sei, :mei, :postal_code, :address, :phone_number, :email, :password)
+#   end
+
+# def create_address
+#   unless current_user.address.exists?
+#     user = current_user
+#     address = Address.new(family_name:user.family_name, first_name:user.first_name, sei:user.sei, mei:user.mei, postal_code:user.postal_code,
+#                           phone_number:user.phone_number,adress:user.address)
+#     address.save
+#   end
+#  end
+
 end
