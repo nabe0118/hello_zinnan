@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <table class="table">
+                <thead>
+                    <tr>
+                       <th>name</th>
+                       <th>day</th>
+                       <th>edit</th>
+                    </tr>
+                </thead>
+                 <% @orders.each do |order| %>
+                <tbody>
+                  <th><%= order.user.family_name %><%=order.user.first_name  %></th>
+                  <td><%= order.created_at %></td>
+                  <td><%= link_to "show",administrator_order_path(order.id)%></td>
+                  <% end %>
+                </tbody>
+         </table>
+     </div>
+   </div>
+</div>
