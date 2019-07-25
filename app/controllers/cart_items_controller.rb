@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :correct_user, only:[:show, :index, :edit, :create, :update, :destroy]
   before_action :check_id, only:[:create]
 
@@ -16,6 +17,7 @@ class CartItemsController < ApplicationController
           end
         end
   end
+
 
   def new
     @cd = Cd.find(params[:cd_id])
