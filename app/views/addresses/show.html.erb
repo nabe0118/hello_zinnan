@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1>住所詳細</h1>
+    <h1>宛先詳細</h1>
           <div class="col-xs-3"></div>
           <div class="col-xs-3">名前</div>
           <div class="col-xs-6"><%= @address.family_name %><% @address.first_name%></div>
@@ -27,7 +27,9 @@
   </div>
   <div class="row">
           <div class="col-xs-6"></div>
-          <div class="col-xs-3"><%= link_to '編集', edit_address_path %></div>
-          <div class="col-xs-3"><%= link_to "消去", address_path(@address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+          <div class="col-xs-3">
+            <h4 class="address-menu"><%= link_to '編集', edit_address_path,class:"label label-info" %></h4>
+            <h4 class="address-menu"><%= link_to "消去", address_path(@address.id),class:"label label-info", method: :delete, "data-confirm" => "本当に削除しますか？" %></h4>
+          </div>
   </div>
 </div>

@@ -8,79 +8,106 @@
         <% end %>
       <% end %>
 
+      <h3>注文商品一覧</h3>
+
       <%= form_for @order do |f| %>
-        <div class="col-md-4">
-              <h3 class="header">注文商品一覧</h3>
-              <% sum = 0 %>
-              <% @cart_items.each do |cart | %>
-                <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
-        </div>
-        <div class="col-md-8">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>アルバム名</th>
-                      <th>アーティスト名</th>
-                      <th>価格(税込)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                <tr>
-                  <td></td>
-                  <td><%= cart.cd.name %></td>
-                  <td><%= @artist.name %></td>
-                  <td><%= (cart.cd.price * 1.08).ceil %></td>
-                </tr>
-                <% sum = sum + cart.cd.price %>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-    </div>
-    <div class="row">
-          <div class="col-md-6 center">
-          <h3 class="header">ユーザー情報</h3>
-            <div class="user_info">
-              <div class="user-body">
-                <div class="user-text0">
-                  <label>お名前</label>
-                  <%= @user.family_name  %><%= @user.first_name%>
+        <% @cart_items.each do |cart | %>
+          <div class="row">
+            <div class="col-xs-4">
+              <%= attachment_image_tag cart.cd, :image, :fill, 200,200, format: 'jpeg', fallback: "no_image.png" , size:"200x200"%>
+            </div>
+            <div class="col-xs-8">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>アルバム名</th>
+                    <th>アーティスト名</th>
+                    <th>枚数</th>
+                    <th>単価(税込)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td><%= cart.cd.name %></td>
+                    <td><%= @artist.name %></td>
+                    <td><%= cart.number %></td>
+                    <td><%= (cart.cd.price * 1.08).ceil %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% end %>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h3>配送先指定</h3>
+              <p>指定しない場合、ユーザー様の元に発送いたします</p>
+              <div class="user_info">
+                <div class="user-body">
+                  <div class="user-text">
+                    <div>
+                      名前：<%= @user.family_name %><%= @user.first_name %>
+                    </div>
+                    <div>
+                      郵便番号：<%= @user.postal_code %>
+                    </div>
+                    <div>
+                      住所：<%= @user.address %>
+                    </div>
+                    <div>
+                      電話番号：<%= @user.phone_number  %>
+                    </div>
+                  </div>
                 </div>
-                <div class="user-text1">
-                  <label>電話番号</label>
-                <%= @user.phone_number  %>
+               </div>
+              <div class="user-addresses">
+                <p>配送先指定</p>
+                <% @addresses.each do |address| %>
+                  <div class="address-text">
+                    <label><%= f. radio_button :address_id, "#{address.id}" %></label>
+                    <div>
+                      名前：<%= address.family_name %><%= address.first_name %>
+                    </div>
+                    <div>
+                      郵便番号：<%= address.postal_code %>
+                    </div>
+                    <div>
+                      住所：<%= address.address %>
+                    </div>
+                    <div>
+                      電話番号：<%= address.phone_number  %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class = "col-xs-6">
+              <div class = "pay">
+                <div>
+                  <%= f.label :支払い方法選択 %>
+                  <%= f.select :payment_method, Order.payment_methods.keys.to_a,{} %>
                 </div>
-                <div class="user-text2">
-                  <% @addresses.each do |address| %>
-                      <label><%= f. radio_button :address_id, "#{address.id}" %></label>
-                      <label>住所</label>
-                      <%= address.address %><br>
-                  <% end %>
+                <h3>合計金額</h3>
+                <div class="cd_price">
+                  価格(税込):<%= calculate_sum(@cart_items) %>円<br>
                 </div>
-                <div class="user-text3">
-                <%= f.select :payment_method, Order.payment_methods.keys.to_a,{} %>
+                <div class="sent_price">
+                      配送料 500円
+                </div><br>
+                <div class="price">
+                  合計金額:<%= calculate_sum(@cart_items)+500 %>円
+                  <%= f.hidden_field :total_price, :value =>  "#{calculate_sum(@cart_items)+500}" %>
+                </div>
+                <div class = "order_btn">
+                  <%= f.submit "購入する", :class =>  "btn btn-success" %><br>
                 </div>
               </div>
             </div>
-          </div>
-          <div class = "col-md-6 center">
-            <h3 class="header">合計金額</h3>
-            <div class="cd_price">
-              価格(税込):<%= ( sum * 1.08).ceil %>円<br>
-            <div class="sent_price">
-              配送料 500円
-            </div><br>
-            <div class="price">
-              合計金額:<%= ((sum * 1.08)+500).ceil %>円
-              <%= f.hidden_field :total_price, :value => "#{((sum * 1.08)+500).ceil}" %>
-            </div>
-            <div class = "order_btn">
-              <%= f.submit "購入確定", :class =>  "btn btn-success" %><br>
-            </div>
           </div >
-      </div>
       <% end %>
-     </div>
-   </div>
+    </div>
+  </div>
 </div>

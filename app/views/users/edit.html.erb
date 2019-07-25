@@ -1,54 +1,49 @@
-<h2 style="text-rendering: center;">会員登録情報変更</h2>
-
-<%= form_for(@user) do |f| %>
-
-  <div class="field">
-	<label>お名前</label>
-	<%= f.text_field :family_name %>
-	<input type="text" name="familiy_name">
-	<%= f.text_field :first_name %>
-	<input type="text" name="first_name">
-  </div>
-
-  <div class="field">
-	<label>オナマエ</label>
-	<%= f.text_field :sei %>
-	<input type="text" name="sei">
-	<%= f.text_field :mei %>
-	<input tpype="text" name="mei">
-  </div>
-
-  <div class="field">
-	<label>郵便番号</label>
-	<%= f.number_field :postal_code %>
-	<input type="number" name="postal_code">
-  </div>
-
-  <div class="field">
-	<label>住所</label>
-	<%= f.text_field :address %>
-	<input type="text" name="address">
-  </div>
-
-  <div class="field">
-	<label>電話番号</label>
-	<%= f.phone_field :phone_number %>
-	<input type="tel" name="phone_number">
-  </div>
-
-  <div class="field">
-	<label>メールアドレス</label>
-	<%= f.email_field :email %>
-	<input type="email" name="email">
-  </div>
-
-  <div class="field">
-	<label>パスワード</label>
-	<%= f.password_field :password %>
-	<input type="password" name="password">
-  </div>
-
-	<%= f.submit '変更', class: "btn btn-default" %>
-
-<% end %>
-
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h2 class="text-center">ユーザー情報変更</h2>
+				<%= form_for(@user) do |f| %>
+				        <div class="c-signup">
+				            <div class="c-signup__field">
+				                <%= f.label :姓, class:'c-label' %>
+				                <%= f.text_field :family_name,  autofocus: true, autocomplete: "姓",class:'c-input-field' %>
+				            </div>
+				            <div class="c-signup__field">
+				                <%= f.label :名, class:'c-label' %><br />
+				                <%= f.text_field :first_name, autocomplete: "名",class:'c-input-field' %>
+				            </div>
+				            <div class="c-signup__field">
+				                <%= f.label :セイ, class:'c-label' %><br />
+				                <%= f.text_field :sei, autocomplete: "セイ",class:'c-input-field' %>
+				            </div>
+				            <div class="c-signup__field">
+				                 <%= f.label :メイ, class:'c-label' %><br />
+				                 <%= f.text_field :mei, autocomplete: "メイ",class:'c-input-field' %>
+				            </div>
+				            <div class="c-signup__field c-signup__field--fill">
+				                <%= f.label :電話番号, class:'c-label' %><br />
+				                <%= f.text_field :phone_number, autocomplete: "電話番号",class:'c-input-field',placeholder:'ハイフンなしで入力してください' %>
+				            </div>
+				            <div class="c-signup__field c-signup__field--fill">
+				                <%= f.label :メールアドレス,class:'c-label' %><br />
+				                <%= f.email_field :email, autocomplete: "メールアドレス",class:'fc-input-field' %>
+				            </div>
+				            <div class="c-signup__field c-signup__field--fill">
+				                <%= f.label :郵便番号,class:'c-label' %><br />
+				                <%= f.text_field :postal_code, autocomplete: "郵便番号", class:'c-input-field' %>
+				            </div>
+				            <div class="c-signup__field c-signup__field--fill">
+				                <%= f.label :住所,class:'c-label' %><br />
+				                <%= f.text_field :address, autocomplete: "住所",class:'c-input-field' %>
+				            </div>
+				            <div class="c-signup__field c-signup__field--fill">
+				            	<%= link_to "住所を追加する", new_address_path %>
+				            </div>
+				            <div class="c-signup__button">
+				                  <%= f.submit "変更",class:"c-button", "data-confirm" => "更新しますか？" %>
+				            </div>
+				        </div>
+				<% end %>
+		</div>
+	</div>
+</div>
