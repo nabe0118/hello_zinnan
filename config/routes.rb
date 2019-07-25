@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :labels, only:[:index, :edit, :create, :update, :destroy]
     resources :artists, only:[:index, :edit, :create, :update, :destroy]
     resources :end_users
+    resources :orders
   end
 
     devise_for :admins,controllers: {
