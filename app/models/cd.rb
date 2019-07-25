@@ -17,6 +17,7 @@ class Cd < ApplicationRecord
   validates :name, presence: true
   validates :stock, numericality: { only_integer: true,greater_than: -1, message: "は正しい値を入力してください"}
   validates :price, numericality: { only_integer: true,greater_than: 0, message: "は正しい値を入力してください"}
+  validates_associated :disks
 
 
 end
