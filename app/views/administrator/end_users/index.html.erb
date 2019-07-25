@@ -1,4 +1,4 @@
-<h1>ユーザー一覧</h1>
+<h2>ユーザー一覧</h2>
 
 <table class="table table-striped">
 	<thead>
@@ -20,6 +20,6 @@
 			<td><%=link_to '編集',edit_administrator_end_user_path(user.id) %></td>
 		</tr>
 		<% end %>
-		<%= paginate @users, class: "paginate" %>
 	</tbody>
 </table>
+<%= paginate @users, class: "paginate" %>
