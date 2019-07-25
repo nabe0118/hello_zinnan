@@ -36,7 +36,7 @@ class Administrator::CdsController < ApplicationController
     if @cd.update(cd_params)
       redirect_to administrator_cd_path(@cd.id)
     else
-      render edit
+      render :edit
     end
   end
 

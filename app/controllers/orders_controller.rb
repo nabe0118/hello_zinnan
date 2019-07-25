@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :check_carts
+  before_action :check_stock, only:[:create]
 
   def check_carts
     unless current_user.cart_items.exists?
@@ -10,37 +11,21 @@ class OrdersController < ApplicationController
     end
   end
 
-def new
-end
-
-def index
-  @order = Order.new
-  @user = current_user
-  @addresses = @user.addresses
-  @cart_items = current_user.cart_items
-  @cd = @cart_items.first.cd
-  @disk = @cd.disks.first
-  @music = @disk.musics.first
-  @artist = @music.artist
-end
-
-def show
-@order = Order.find(params[:id])
-end
-
-def create
-  @order  =Order.new(order_params)
-  @order.user_id = current_user.id
-  @cart_items = current_user.cart_items
-  if @order.save
-    @cart_items.each do |cart|
-      cd = cart.cd
-      cd.stock = cd.stock - cart.number
-      cd.update(stock:cd.stock )
+  def check_stock
+    carts = current_user.cart_items
+    carts.each do |cart|
+      if cart.number > cart.cd.stock
+        flash[:notice] = "申し訳ございません。在庫がありません。"
+        redirect_to cart_items_path
+      end
     end
-    @cart_items.destroy_all
-    redirect_to cds_path
-  else
+  end
+
+  def new
+  end
+
+  def index
+    @order = Order.new
     @user = current_user
     @addresses = @user.addresses
     @cart_items = current_user.cart_items
@@ -48,9 +33,42 @@ def create
     @disk = @cd.disks.first
     @music = @disk.musics.first
     @artist = @music.artist
-    render :index
   end
-end
+
+  def show
+  @order = Order.find(params[:id])
+  end
+
+  def create
+    @order  =Order.new(order_params)
+    @order.user_id = current_user.id
+    @cart_items = current_user.cart_items
+    if @order.save
+      @cart_items.each do |cart|
+        cd = cart.cd
+        cd.stock = cd.stock - cart.number
+        cd.update(stock:cd.stock )
+        @order_detail = @order.order_details.build
+          @order_detail.cd_id = cart.cd.id
+          @order_detail.uni_price = cart.cd.price
+          @order_detail.number = cart.number
+          @order_detail.save
+      end
+      @cart_items.destroy_all
+      cds = Cd.where( stock: 0 )
+      cds.update_all( status: 1)
+      redirect_to cds_path
+    else
+      @user = current_user
+      @addresses = @user.addresses
+      @cart_items = current_user.cart_items
+      @cd = @cart_items.first.cd
+      @disk = @cd.disks.first
+      @music = @disk.musics.first
+      @artist = @music.artist
+      render :index
+    end
+  end
 
   def edit
   @order = Order.find(params[:id])
