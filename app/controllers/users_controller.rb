@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
  # before_action :create_address, only:[:show]
+ before_action :authenticate_user!
 
 
   def show

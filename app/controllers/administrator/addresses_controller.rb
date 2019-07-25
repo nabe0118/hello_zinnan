@@ -1,4 +1,7 @@
 class Administrator::AddressesController < ApplicationController
+
+  before_action :authenticate_admin!
+
 def index
     @user = User.find(params[:id])
     @addresses = @user.addresses
