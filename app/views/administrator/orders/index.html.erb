@@ -11,7 +11,7 @@
                 </thead>
                  <% @orders.each do |order| %>
                 <tbody>
-                  <th><%= order.user.family_name %><%=order.user.first_name  %></th>
+                  <th><%= order.user.family_name %><%= order.user.first_name  %></th>
                   <td><%= order.created_at %></td>
                   <td><%= link_to "show",administrator_order_path(order.id)%></td>
                   <% end %>
