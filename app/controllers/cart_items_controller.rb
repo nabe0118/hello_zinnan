@@ -1,11 +1,11 @@
 class CartItemsController < ApplicationController
 
-  before_action :authenticate_user!
-  before_action :correct_user, only:[:show, :index, :edit, :create, :update, :destroy]
+  before_action :correct_user, only:[:show, :edit, :create, :update, :destroy]
   before_action :check_id, only:[:create]
 
   def correct_user
-    redirect_to cds_path unless current_user
+    @cart_item = CartItem.find(params[:id])
+    redirect_to cds_path unless @cart_item.user == current_user
   end
 
   def check_id
