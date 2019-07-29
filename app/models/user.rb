@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  acts_as_paranoid
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :cds, through: :cart_items
   validates :phone_number, presence: true
@@ -13,5 +14,4 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
   validates :phone_number, format: { with: /\A[0-9]+\z/ , message: "は半角数字のみで入力してください"}
   paginates_per 15
-  acts_as_paranoid
 end

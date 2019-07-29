@@ -1,5 +1,5 @@
 class Cd < ApplicationRecord
-
+  acts_as_paranoid
   attachment :image
   has_many :disks, dependent: :destroy, inverse_of: :cd
   has_many :musics, through: :disks

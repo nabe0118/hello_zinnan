@@ -6,23 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!([{email: 'test@test'}, {password: 'aaaaaa'}])
+#Admin.create!([{email: 'test@test'}, {password: 'aaaaaa'}])
+admin = Admin.new(:email => 'test@test.com', :password => 'aaaaaa')
+admin.save!
 
 
-# coding: utf-8
+#  coding: utf-8
+
 Genre.create(
-  [
-    {name: 'J-POP'},
-    {name: '洋楽'},
-    {name: 'K-POP'},
-    {name: 'ロック/オルタナティブ'},
-    {name: 'パンク/ハードコア'},
-    {name: 'ビジュアル'},
-    {name: 'R&B/ソウル'},
-    {name: 'ヒップホップ'},
-    {name: 'ダンス/ハウス/テクノ'},
-    {name: 'レゲエ/スカ'},
-    {name: 'EDM'}
-  ]
-)
+   [
+     {name: 'J-POP'},
+     {name: '洋楽'},
+     {name: 'K-POP'},
+     {name: 'ロック/オルタナティブ'},
+     {name: 'パンク/ハードコア'},
+     {name: 'ビジュアル'},
+     {name: 'R&B/ソウル'},
+     {name: 'ヒップホップ'},
+     {name: 'ダンス/ハウス/テクノ'},
+     {name: 'レゲエ/スカ'},
+     {name: 'EDM'}
+    ]
+ )
 
+ 
