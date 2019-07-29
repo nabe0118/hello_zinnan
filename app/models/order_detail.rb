@@ -1,4 +1,5 @@
 class OrderDetail < ApplicationRecord
-  belongs_to :order
-  belongs_to :cd
+  acts_as_paranoid without_default_scope: true
+  belongs_to :order, -> { with_deleted }
+  belongs_to :cd, -> { with_deleted }
 end

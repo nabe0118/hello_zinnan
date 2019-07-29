@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_162346) do
+ActiveRecord::Schema.define(version: 2019_07_29_044924) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "first_name"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_162346) do
     t.datetime "updated_at", null: false
     t.string "family_name"
     t.integer "user_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_addresses_on_deleted_at"
   end
 
   create_table "admin_mypages", force: :cascade do |t|
@@ -66,6 +68,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_162346) do
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_cds_on_deleted_at"
   end
 
   create_table "disks", force: :cascade do |t|
@@ -108,6 +112,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_162346) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_order_details_on_deleted_at"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -126,6 +132,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_162346) do
     t.integer "user_id"
     t.integer "address_id"
     t.integer "total_price"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_orders_on_deleted_at"
   end
 
   create_table "user_addresses", force: :cascade do |t|
