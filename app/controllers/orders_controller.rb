@@ -1,8 +1,15 @@
 class OrdersController < ApplicationController
 
+  before_action :correct_user, only:[:show]
   before_action :authenticate_user!
   before_action :check_carts, only:[:index, :create]
   before_action :check_stock, only:[:create]
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to cds_path unless @user == current_user
+  end
+
 
   def check_carts
     unless current_user.cart_items.exists?
@@ -19,9 +26,6 @@ class OrdersController < ApplicationController
         redirect_to cart_items_path
       end
     end
-  end
-
-  def new
   end
 
   def index
@@ -70,16 +74,6 @@ class OrdersController < ApplicationController
       flash[:notice] = "購入ありがとうございました。"
       render :index
     end
-  end
-
-  def edit
-  @order = Order.find(params[:id])
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private
